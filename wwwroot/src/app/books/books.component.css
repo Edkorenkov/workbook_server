@@ -1,0 +1,26 @@
+
+.books-sidebar {
+    
+    position: fixed;
+
+    top: 0;
+
+    left: 60px;
+
+    bottom: 0;
+
+    width: 350px;
+
+    background-color: #8a81d6; /*#2979fb;*/
+
+    color: #ffffff;
+
+}
+
+.books-pages {
+
+    margin: 10px;
+
+    margin-left: 420px;
+
+}

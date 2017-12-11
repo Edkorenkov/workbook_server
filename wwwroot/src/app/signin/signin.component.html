@@ -1,0 +1,58 @@
+
+<div class="signup-background">
+
+    <div class="signup-sidebar">
+        
+        <h1>Daily Workbook</h1>
+
+        <h5>Create your personal daily workbook account.</h5>
+
+        <div class="signup-form">
+
+            <div class="signup-form__control">
+
+                <label for="user-email">Email Address</label>
+
+                <div class="control">
+
+                    <input id="user-email"
+                           type="text"
+                           placeholder="Enter your email"
+                           [(ngModel)]="user.email"
+                           (keyup.enter)="OnSubmit();" />
+
+                </div>
+
+            </div>
+
+            <div class="signup-form__control">
+
+                <label for="user-password">Password</label>
+
+                <div class="control">
+
+                    <input id="user-password" 
+                           type="password"
+                           placeholder="Enter your password"
+                           [(ngModel)]="user.password"
+                           (keyup.enter)="OnSubmit();" />
+
+                </div>
+
+            </div>
+
+            <div class="signup-form__button">
+
+                <input type="button" 
+                       value="Sign in"
+                       (click)="OnSubmit();" />
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>
+
+

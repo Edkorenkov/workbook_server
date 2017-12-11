@@ -1,0 +1,172 @@
+
+.signup-background {
+
+    /*background: url("/src/content/images/new-york-city-buildings-sunrise-morning-hd-wallpaper.jpg") no-repeat center center fixed;*/
+    
+    background-size: cover;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+    
+    right: 0;
+
+    bottom: 0;
+
+}
+
+.signup-sidebar {
+
+    width: 500px;
+
+    position: fixed;
+
+    top: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    background-color: #F9FAFB;
+
+    z-index: 20;
+
+    padding: 80px;
+
+    font-family: "Roboto";
+
+}
+
+.signup-sidebar h1 {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin: 30px 0;
+
+    text-transform: lowercase;
+
+}
+
+.signup-sidebar h5 {
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    margin: 50px 0 10px 0;
+
+}
+
+.signup-form {
+
+
+}
+
+.signup-form__control {
+
+    background-color: #fff;
+
+    border: 1px solid #e6ecf5;
+    
+    color: #515365;
+
+    position: relative;
+
+    border-radius: 2px;
+
+    padding-top: 7px;
+
+    padding-left: 12px;
+
+    padding-right: 12px;
+
+    padding-bottom: 4px;
+
+    overflow: hidden;
+
+    width: 100%;
+
+    font-size: 12px;
+
+    margin-bottom: 10px; 
+
+}
+
+.signup-form__control label {
+
+    text-transform: uppercase;
+
+}
+
+.signup-form__control input[type="text"],
+.signup-form__control input[type="password"] {
+    
+    border: none;
+
+    padding: 15px 0 5px 0;
+
+    background: none;
+
+    width: 100%;
+
+    outline: none;
+
+    font-family: "Roboto";
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #000000;
+
+}
+.signup-form__control input[type="text"]::-webkit-input-placeholder,
+.signup-form__control input[type="password"]::-webkit-input-placeholder {
+
+    color: #d2d6db;
+
+    font-weight: 300;
+
+}
+.signup-form__button {
+
+    margin-top: 30px;
+
+}
+
+.signup-form__button input[type="button"] {
+
+    background-color: #2979fb;
+
+    font-family: "Roboto";
+    
+    font-size: 14px;
+
+    color: #ffffff;
+
+    border: none;
+
+    cursor: pointer;
+
+    padding: 10px 35px;
+
+    outline: none;
+
+}
+
+.signup-form__button input[type="button"]:hover {
+
+    background-color: #4189fc;
+
+}
+
+.signup-form__button input[type="button"]:active {
+    
+    background-color: #146cf8;
+
+}
+

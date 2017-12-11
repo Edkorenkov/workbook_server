@@ -1,0 +1,42 @@
+
+<div class="container pages__editor">
+
+    <page-created-controls (onEditPage)="EditPage(page);"
+                           (onDeletePage)="DeletePage(page);"></page-created-controls>
+
+    <div class="pages__editor-canvas">
+
+        <h5 class="pages__editor-canvas__time">{{ page.dateCreated }}</h5>
+
+        <div class="editor-content">
+
+            <div class="row">
+
+                <div class="column">
+
+                    <input type="text"
+                           class="pages__editor-canvas__title" 
+                           placeholder="Create title..."
+                           [(ngModel)]="page.title" />
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="column">
+
+                    <textarea class="pages__editor-canvas__text"
+                              placeholder="Write your ideas here..."
+                              [(ngModel)]="page.text"></textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

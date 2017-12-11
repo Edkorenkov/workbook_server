@@ -1,0 +1,69 @@
+
+.sidebar-wrap {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 60px;
+
+    background-color: #2b303b;
+
+    color: #788195;
+
+}
+
+.sidebar-wrap .sidebar {
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    font-size: 26px;
+
+}
+
+.sidebar-wrap .sidebar .sidebar-devider {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+}
+
+.sidebar-wrap .sidebar li {
+
+    text-align: center;
+
+    cursor: pointer;
+
+    vertical-align: middle;
+
+    width: 60px;
+
+    height: 60px;
+
+    display: inline-block;
+
+    position: relative;
+
+    line-height: 70px;
+
+    outline: none;
+
+}
+
+.sidebar-wrap .sidebar li.is-active,
+.sidebar-wrap .sidebar li:hover {
+
+    color: #ffffff;
+
+}

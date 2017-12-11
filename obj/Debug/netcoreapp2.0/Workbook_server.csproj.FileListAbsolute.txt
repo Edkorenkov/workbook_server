@@ -1,0 +1,10 @@
+E:\Playground\Workbook_server\bin\Debug\netcoreapp2.0\Workbook_server.deps.json
+E:\Playground\Workbook_server\bin\Debug\netcoreapp2.0\Workbook_server.runtimeconfig.json
+E:\Playground\Workbook_server\bin\Debug\netcoreapp2.0\Workbook_server.runtimeconfig.dev.json
+E:\Playground\Workbook_server\bin\Debug\netcoreapp2.0\Workbook_server.dll
+E:\Playground\Workbook_server\bin\Debug\netcoreapp2.0\Workbook_server.pdb
+E:\Playground\Workbook_server\obj\Debug\netcoreapp2.0\Workbook_server.csproj.CoreCompileInputs.cache
+E:\Playground\Workbook_server\obj\Debug\netcoreapp2.0\Workbook_server.AssemblyInfoInputs.cache
+E:\Playground\Workbook_server\obj\Debug\netcoreapp2.0\Workbook_server.AssemblyInfo.cs
+E:\Playground\Workbook_server\obj\Debug\netcoreapp2.0\Workbook_server.dll
+E:\Playground\Workbook_server\obj\Debug\netcoreapp2.0\Workbook_server.pdb

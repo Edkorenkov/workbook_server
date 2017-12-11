@@ -1,0 +1,37 @@
+
+<div class="book__pages">
+
+    <div class="book__pages-toolbar clearfix">
+
+        <div class="book__pages-toolbar__control"
+             [routerLink]="['/books', bookId, 'pages', 'create']">
+
+            <span class="book__pages-toolbar__control-icon jam jam-plus"></span>
+
+            <span class="book__pages-toolbar__control-title">Add new page</span>
+
+        </div>
+
+    </div>
+
+    <div class="book__pages-list clearfix">
+
+        <div class="book__pages-list__page"
+             *ngFor="let page of pages"
+             [routerLink]="['/books', bookId, 'pages', page.id]">
+
+            <div class="book__pages-list__page-content">
+
+                <div class="book__pages-list__page-date">{{ page?.dateCreated }}</div>
+
+                <h2 class="book__pages-list__page-title">{{ page?.title }}</h2>
+
+                <p class="book__pages-list__page-text">{{ page?.text }}</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

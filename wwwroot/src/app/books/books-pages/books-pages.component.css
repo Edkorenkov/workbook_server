@@ -1,0 +1,170 @@
+
+.book__pages {
+
+    font-family: "Roboto";
+
+}
+
+.book__pages-toolbar {
+
+    width: 100%;
+
+}
+
+.book__pages-toolbar__control {
+
+    position: relative;
+
+    color: #1b69e8;
+
+    padding: 5px;
+
+    float: left;
+
+    cursor: pointer;
+
+}
+
+.book__pages-toolbar__control:hover {
+
+    color: #2163ce;
+
+}
+
+.book__pages-toolbar__control-icon {
+
+    font-size: 12px;    
+
+    position: absolute;
+
+    top: 9px;
+
+    left: 0;
+
+}
+
+.book__pages-toolbar__control-title {
+
+    font-size: 14px;
+
+    line-height: 14px;
+
+    font-weight: 400;
+
+    padding-left: 15px;
+
+}
+
+.book__pages-list {
+
+    width: 100%;
+
+}
+
+.book__pages-list__page {  
+
+    padding: 0;
+
+    margin: 0;
+
+    width: 25%;
+
+    
+
+    float: left;
+
+}
+
+.book__pages-list__page-content { 
+
+    margin: 10px;
+
+    border: 1px solid #dddee0;
+
+    background-color: #ffffff;
+
+    border-radius: 3px;  
+    
+    padding: 25px;
+
+    min-height: 200px;
+
+}
+
+.book__pages-list__page-content:hover {
+
+    border: 1px solid #2979fb;
+
+    cursor: pointer;
+
+}
+
+.book__pages-list__page-date {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #aeafb4;
+
+}
+
+.book__pages-list__page-title {
+
+    color: #404044;
+
+    margin: 20px 0;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+.book__pages-list__page-text {
+
+    color: #404044;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+/* .pages {
+
+    font-family: "Roboto";
+
+}
+
+.pages .page {
+
+    float: left;
+
+    margin: 0 10px;
+
+}
+
+.pages .page .page-content {
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e6ecf5;
+
+    color: #515365;
+
+    font-size: 16px;
+
+    font-weight: 300;
+
+    line-height: 1em;
+
+} */

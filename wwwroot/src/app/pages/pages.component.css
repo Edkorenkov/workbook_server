@@ -1,0 +1,156 @@
+
+.pages__editor {
+
+    font-family: "Roboto";
+
+    margin: auto;
+
+    width: 870px;
+
+    background-color: #ffffff;
+
+}
+
+.pages__editor-canvas {
+
+    padding: 15px;
+
+}
+
+.pages__editor-canvas__time {
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #aeafb4;
+
+}
+
+.pages__editor-canvas__title,
+.pages__editor-canvas__text {
+
+    border: none;
+    
+    background: none;
+
+    width: 100%;
+
+    outline: none;
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #404044;
+
+    font-size: 24px;
+
+    font-family: "Roboto";
+
+    font-weight: 500;
+
+}
+
+.pages__editor-canvas__title::-webkit-input-placeholder {
+
+    color: #aeafb4;
+
+    font-weight: 300;
+
+}
+
+.pages__editor-canvas__title {
+
+    margin: 50px 0 25px 0;
+
+}
+
+.pages__editor-canvas__text {
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    line-height: 1.5em;
+
+    resize: none;
+
+    overflow: hidden;
+
+    overflow-y: auto;
+
+    min-height: 745px;
+
+}
+
+
+/* .page-editor h3 { 
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    margin: 20px 0;
+
+}
+
+.page-editor .editor-content {
+
+    position: relative;
+
+}
+
+.editor-content .page-title {
+
+    border: none;
+
+    background: none;
+
+    width: 100%;
+
+    outline: none;
+
+    font-size: 24px;
+
+    padding: 15px 0;
+
+    margin: 0;
+
+}
+
+.editor-content textarea {
+
+    border: none;
+
+    background: none;
+
+    width: 100%;
+
+    outline: none;
+
+    font-size: 1em;
+
+    font-weight: 300;
+
+    padding: 0;
+
+    padding-right: 15px;
+
+    font-family: 'Roboto', sans-serif;
+
+    overflow: hidden;
+
+    overflow-y: auto;
+
+    line-height: 1.5em;
+
+    color: #606c76;
+
+    resize: none;
+
+    margin: 0;
+
+    min-height: 250px;
+
+} */

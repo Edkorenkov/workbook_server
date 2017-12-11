@@ -1,0 +1,11 @@
+
+<div class="book-search">
+    
+        <span class="book-search-icon jam jam-search"></span>
+    
+        <input type="text" 
+               placeholder="Search by book title"
+               [(ngModel)]="searchQuery"
+               (keyup)="onSearch.emit(searchQuery);" />
+    
+    </div>

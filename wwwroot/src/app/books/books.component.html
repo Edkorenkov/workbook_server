@@ -1,0 +1,20 @@
+
+<sidebar></sidebar>
+
+<div class="books-sidebar">
+    
+    <books-search (onSearch)="SearchBook($event)"></books-search>
+    
+    <books-list [books]="books"
+                [searchQuery]="searchBookQuery"
+                (onCreateBook)="CreateBook($event)"
+                (onRemoveBook)="RemoveBook($event)"></books-list>
+
+</div>
+
+<div class="books-pages">
+
+    <router-outlet></router-outlet>
+
+</div>
+

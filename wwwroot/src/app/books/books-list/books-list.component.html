@@ -1,0 +1,67 @@
+
+<div class="book-list">
+
+    <div class="book-create"
+         (click)="InitBookCreation();">
+
+        <span class="create-icon jam jam-plus"></span>
+
+        <span>Create New Book</span>
+
+    </div>
+
+    <ul *ngIf="isBookCreating">
+
+        <li class="book-new">
+
+            <div class="book-new__wrap">
+                
+                <input type="text"
+                       class="book-new__edit"
+                       placeholder="Enter book title..."
+                       [(ngModel)]="book.title" />
+
+                <div class="book-new__controls">
+
+                    <span class="book-new__controls-action jam jam-check"
+                         (click)="ApplyBookCreation();"></span>
+
+                    <span class="book-new__controls-action jam jam-close"
+                         (click)="DiscardBookCreation();"></span>
+
+                </div>
+
+            </div>
+
+        </li>
+
+    </ul>
+
+    <ul>
+
+        <li class="book"
+            *ngFor="let book of books | bookSearch:searchQuery"
+            (click)="SelectBook(book);"
+            [ngClass]="{ 'book__selected': book.isSelected }"
+            [routerLink]="['/books', book.id, 'pages']">
+
+            <div class="book__wrap">
+
+                <span class="book__selector"></span>
+
+                <h3 class="book__title">{{ book.title }}</h3>
+
+                <div class="book__controls">
+                    
+                    <span class="book__controls-action jam jam-close"
+                         (click)="RemoveBook(book)"></span>
+
+                </div>
+
+            </div>
+
+        </li>
+
+    </ul>
+
+</div>

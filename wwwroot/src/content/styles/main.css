@@ -1,0 +1,36 @@
+
+body, html {
+
+    background-color: #F9FAFB;
+
+    margin: 0;
+
+    overflow-x: hidden;
+
+}
+
+*, 
+*:before,
+*:after {
+
+    -webkit-box-sizing: border-box;
+
+    -moz-box-sizing: border-box;
+
+    box-sizing: border-box;
+
+}
+
+.clearfix {
+
+    display: table;
+
+    content: " ";
+
+}
+
+.clearfix:after {
+
+    clear: both;
+
+}
