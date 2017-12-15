@@ -44,13 +44,41 @@ export class PageCreatedComponent {
 
     };
 
+    PrevPage(currentPage) {
+
+        this._pagesService.GetPageById(currentPage.bookId, currentPage.id - 1)
+
+            .subscribe(
+                page => {
+
+                    this._router.navigate(["/books", page.bookId, "pages", page.id]);
+
+                },
+                error => console.log(error)
+            );
+
+    };
+
+    NextPage(currentPage) {
+
+        this._pagesService.GetPageById(currentPage.bookId, currentPage.id + 1)
+
+            .subscribe(
+                page => {
+
+                    this._router.navigate(["/books", page.bookId, "pages", page.id]);
+
+                },
+                error => console.log(error)
+            );
+
+    };
+
     EditPage(page) {
 
-        const { id, title, text, bookId } = page;
+        const newPage = this._pagesService.MapPage(page);
 
-        const newPage = { id, title, text, bookId };
-
-        if (!title) {
+        if (!newPage.title) {
 
             return;
 
@@ -60,6 +88,31 @@ export class PageCreatedComponent {
 
             .subscribe(
                 done => console.log(done),
+                error => console.log(error)
+            );
+
+    };
+
+    ClonePage(page) {
+
+        const newPage = this._pagesService.MapPage(page);
+
+        if (!newPage.title) {
+
+            return;
+
+        };
+
+        this._pagesService.AddBookPage(newPage)
+
+            .subscribe(
+                createdPage => {
+
+                    console.log(createdPage);
+
+                    this._router.navigate(["/books", createdPage.bookId, "pages", createdPage.id]);
+
+                },
                 error => console.log(error)
             );
 

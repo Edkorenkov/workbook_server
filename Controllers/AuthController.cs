@@ -11,8 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Nelibur.ObjectMapper;
 using Workbook_server.Models;
-using Workbook_server.Persistance.Entities;
-using Workbook_server.Persistance.Repositories;
+using Workbook_server.Persistence.Entities;
+using Workbook_server.Persistence.Repositories;
 using Workbook_server.Services;
 
 namespace Learning_JWT.Controllers

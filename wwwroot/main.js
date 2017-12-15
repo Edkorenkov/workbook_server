@@ -111,6 +111,17 @@ var PagesService = exports.PagesService = (_dec = (0, _core.Injectable)(), _dec(
             });
         }
     }, {
+        key: "MapPage",
+        value: function MapPage(page) {
+            var id = page.id,
+                title = page.title,
+                text = page.text,
+                bookId = page.bookId;
+
+
+            return { id: id, title: title, text: text, bookId: bookId };
+        }
+    }, {
         key: "AddBookPage",
         value: function AddBookPage(page) {
 
@@ -4039,17 +4050,36 @@ var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Comp
             });
         }
     }, {
+        key: "PrevPage",
+        value: function PrevPage(currentPage) {
+            var _this2 = this;
+
+            this._pagesService.GetPageById(currentPage.bookId, currentPage.id - 1).subscribe(function (page) {
+
+                _this2._router.navigate(["/books", page.bookId, "pages", page.id]);
+            }, function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
+        key: "NextPage",
+        value: function NextPage(currentPage) {
+            var _this3 = this;
+
+            this._pagesService.GetPageById(currentPage.bookId, currentPage.id + 1).subscribe(function (page) {
+
+                _this3._router.navigate(["/books", page.bookId, "pages", page.id]);
+            }, function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
         key: "EditPage",
         value: function EditPage(page) {
-            var id = page.id,
-                title = page.title,
-                text = page.text,
-                bookId = page.bookId;
 
+            var newPage = this._pagesService.MapPage(page);
 
-            var newPage = { id: id, title: title, text: text, bookId: bookId };
-
-            if (!title) {
+            if (!newPage.title) {
 
                 return;
             };
@@ -4061,15 +4091,36 @@ var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Comp
             });
         }
     }, {
+        key: "ClonePage",
+        value: function ClonePage(page) {
+            var _this4 = this;
+
+            var newPage = this._pagesService.MapPage(page);
+
+            if (!newPage.title) {
+
+                return;
+            };
+
+            this._pagesService.AddBookPage(newPage).subscribe(function (createdPage) {
+
+                console.log(createdPage);
+
+                _this4._router.navigate(["/books", createdPage.bookId, "pages", createdPage.id]);
+            }, function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
         key: "DeletePage",
         value: function DeletePage(page) {
-            var _this2 = this;
+            var _this5 = this;
 
             this._pagesService.DeleteBookPage(page).subscribe(function (done) {
 
                 console.log(done);
 
-                _this2._router.navigate(["/books", page.bookId, "pages"]);
+                _this5._router.navigate(["/books", page.bookId, "pages"]);
             }, function (error) {
                 return console.log(error);
             });
@@ -4086,7 +4137,7 @@ Reflect.defineMetadata("design:paramtypes", [_router.Router, _router.ActivatedRo
 /***/ 774:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container pages__editor\">\r\n\r\n    <page-created-controls (onEditPage)=\"EditPage(page);\"\r\n                           (onDeletePage)=\"DeletePage(page);\"></page-created-controls>\r\n\r\n    <div class=\"pages__editor-canvas\">\r\n\r\n        <h5 class=\"pages__editor-canvas__time\">{{ page.dateCreated }}</h5>\r\n\r\n        <div class=\"editor-content\">\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <input type=\"text\"\r\n                           class=\"pages__editor-canvas__title\" \r\n                           placeholder=\"Create title...\"\r\n                           [(ngModel)]=\"page.title\" />\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <textarea class=\"pages__editor-canvas__text\"\r\n                              placeholder=\"Write your ideas here...\"\r\n                              [(ngModel)]=\"page.text\"></textarea>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
+module.exports = "\r\n<div class=\"container pages__editor\">\r\n\r\n    <page-created-controls (onPrevPage)=\"PrevPage(page);\"\r\n                           (onNextPage)=\"NextPage(page);\"\r\n                           (onEditPage)=\"EditPage(page);\"\r\n                           (onClonePage)=\"ClonePage(page);\"\r\n                           (onDeletePage)=\"DeletePage(page);\"></page-created-controls>\r\n\r\n    <div class=\"pages__editor-canvas\">\r\n\r\n        <h5 class=\"pages__editor-canvas__time\">{{ page.dateCreated }}</h5>\r\n\r\n        <div class=\"editor-content\">\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <input type=\"text\"\r\n                           class=\"pages__editor-canvas__title\" \r\n                           placeholder=\"Create title...\"\r\n                           [(ngModel)]=\"page.title\" />\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <textarea class=\"pages__editor-canvas__text\"\r\n                              placeholder=\"Write your ideas here...\"\r\n                              [(ngModel)]=\"page.text\"></textarea>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -4103,7 +4154,7 @@ exports.PageCreatedControlsComponent = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
 var _core = __webpack_require__(7);
 
@@ -4160,20 +4211,44 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
 
     styles: [__webpack_require__(302)]
 
-}), _dec2 = (0, _core.Output)(), _dec3 = (0, _core.Output)(), _dec(_class = (_class2 = function () {
+}), _dec2 = (0, _core.Output)(), _dec3 = (0, _core.Output)(), _dec4 = (0, _core.Output)(), _dec5 = (0, _core.Output)(), _dec6 = (0, _core.Output)(), _dec(_class = (_class2 = function () {
     function PageCreatedControlsComponent() {
         _classCallCheck(this, PageCreatedControlsComponent);
 
-        _initDefineProp(this, "onEditPage", _descriptor, this);
+        _initDefineProp(this, "onPrevPage", _descriptor, this);
 
-        _initDefineProp(this, "onDeletePage", _descriptor2, this);
+        _initDefineProp(this, "onNextPage", _descriptor2, this);
+
+        _initDefineProp(this, "onEditPage", _descriptor3, this);
+
+        _initDefineProp(this, "onClonePage", _descriptor4, this);
+
+        _initDefineProp(this, "onDeletePage", _descriptor5, this);
     }
 
     _createClass(PageCreatedControlsComponent, [{
+        key: "PrevPage",
+        value: function PrevPage() {
+
+            this.onPrevPage.emit();
+        }
+    }, {
+        key: "NextPage",
+        value: function NextPage() {
+
+            this.onNextPage.emit();
+        }
+    }, {
         key: "EditPage",
         value: function EditPage() {
 
             this.onEditPage.emit();
+        }
+    }, {
+        key: "ClonePage",
+        value: function ClonePage() {
+
+            this.onClonePage.emit();
         }
     }, {
         key: "DeletePage",
@@ -4184,12 +4259,27 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
     }]);
 
     return PageCreatedControlsComponent;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "onEditPage", [_dec2], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "onPrevPage", [_dec2], {
     enumerable: true,
     initializer: function initializer() {
         return new _core.EventEmitter();
     }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "onDeletePage", [_dec3], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "onNextPage", [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+        return new _core.EventEmitter();
+    }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "onEditPage", [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+        return new _core.EventEmitter();
+    }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "onClonePage", [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+        return new _core.EventEmitter();
+    }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "onDeletePage", [_dec6], {
     enumerable: true,
     initializer: function initializer() {
         return new _core.EventEmitter();
@@ -4202,7 +4292,7 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
 /***/ 776:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"pages__editor-controls clearfix\">\r\n    \r\n        <div class=\"pages__editor-controls__actions clearfix\">\r\n    \r\n            <div class=\"pages__editor-controls__actions-action\"\r\n                (click)=\"EditPage();\">\r\n    \r\n                <span class=\"jam jam-check\"></span>\r\n    \r\n            </div>\r\n\r\n            <div class=\"pages__editor-controls__actions-action\">\r\n    \r\n                <span class=\"jam jam-download\"></span>\r\n    \r\n            </div>\r\n    \r\n            <div class=\"pages__editor-controls__actions-action\">\r\n    \r\n                <span class=\"jam jam-files\"></span>\r\n    \r\n            </div>\r\n    \r\n            <div class=\"pages__editor-controls__actions-action\"\r\n                (click)=\"DeletePage();\">\r\n    \r\n                <span class=\"jam jam-trash-f\"></span>\r\n    \r\n            </div>\r\n            \r\n        </div>\r\n    \r\n    </div>"
+module.exports = "\r\n<div class=\"pages__editor-controls clearfix\">\r\n\r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"PrevPage();\">\r\n\r\n            <span class=\"jam jam-arrow-left\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"NextPage();\">\r\n\r\n            <span class=\"jam jam-arrow-right\"></span>\r\n\r\n        </div>\r\n\r\n    </div>\r\n    \r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"EditPage();\">\r\n\r\n            <span class=\"jam jam-check\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\">\r\n\r\n            <span class=\"jam jam-download\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"ClonePage();\">\r\n\r\n            <span class=\"jam jam-files\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"DeletePage();\">\r\n\r\n            <span class=\"jam jam-trash-f\"></span>\r\n\r\n        </div>\r\n        \r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 

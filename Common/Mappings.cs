@@ -1,7 +1,7 @@
 
 using Nelibur.ObjectMapper;
 using Workbook_server.Models;
-using Workbook_server.Persistance.Entities;
+using Workbook_server.Persistence.Entities;
 
 namespace Workbook_server.Common
 {

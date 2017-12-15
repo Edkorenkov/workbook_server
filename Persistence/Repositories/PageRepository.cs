@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Workbook_server.Persistance.Entities;
+using Workbook_server.Persistence.Entities;
 
-namespace Workbook_server.Persistance.Repositories
+namespace Workbook_server.Persistence.Repositories
 {
 
     public class PageRepository : IPageRepository

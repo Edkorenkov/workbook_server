@@ -1,34 +1,53 @@
 
 <div class="pages__editor-controls clearfix">
-    
-        <div class="pages__editor-controls__actions clearfix">
-    
-            <div class="pages__editor-controls__actions-action"
-                (click)="EditPage();">
-    
-                <span class="jam jam-check"></span>
-    
-            </div>
 
-            <div class="pages__editor-controls__actions-action">
-    
-                <span class="jam jam-download"></span>
-    
-            </div>
-    
-            <div class="pages__editor-controls__actions-action">
-    
-                <span class="jam jam-files"></span>
-    
-            </div>
-    
-            <div class="pages__editor-controls__actions-action"
-                (click)="DeletePage();">
-    
-                <span class="jam jam-trash-f"></span>
-    
-            </div>
-            
+    <div class="pages__editor-controls__actions clearfix">
+
+        <div class="pages__editor-controls__actions-action"
+            (click)="PrevPage();">
+
+            <span class="jam jam-arrow-left"></span>
+
         </div>
-    
+
+        <div class="pages__editor-controls__actions-action"
+            (click)="NextPage();">
+
+            <span class="jam jam-arrow-right"></span>
+
+        </div>
+
     </div>
+    
+    <div class="pages__editor-controls__actions clearfix">
+
+        <div class="pages__editor-controls__actions-action"
+            (click)="EditPage();">
+
+            <span class="jam jam-check"></span>
+
+        </div>
+
+        <div class="pages__editor-controls__actions-action">
+
+            <span class="jam jam-download"></span>
+
+        </div>
+
+        <div class="pages__editor-controls__actions-action"
+            (click)="ClonePage();">
+
+            <span class="jam jam-files"></span>
+
+        </div>
+
+        <div class="pages__editor-controls__actions-action"
+            (click)="DeletePage();">
+
+            <span class="jam jam-trash-f"></span>
+
+        </div>
+        
+    </div>
+
+</div>

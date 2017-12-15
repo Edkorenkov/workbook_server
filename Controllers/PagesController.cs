@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Nelibur.ObjectMapper;
 using Workbook_server.Models;
-using Workbook_server.Persistance.Entities;
-using Workbook_server.Persistance.Repositories;
+using Workbook_server.Persistence.Entities;
+using Workbook_server.Persistence.Repositories;
 
 namespace Workbook_server.Controllers
 {

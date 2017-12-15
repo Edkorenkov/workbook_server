@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Workbook_server.Persistance.Entities;
+using Workbook_server.Persistence.Entities;
 
-namespace Workbook_server.Persistance.Repositories
+namespace Workbook_server.Persistence.Repositories
 {
     public interface IBookRepository
     {

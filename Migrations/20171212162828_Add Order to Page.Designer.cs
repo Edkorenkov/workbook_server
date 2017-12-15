@@ -11,62 +11,17 @@ using Workbook_server.Persistence;
 namespace Workbook_server.Migrations
 {
     [DbContext(typeof(WorkbookContext))]
-    partial class WorkbookContextModelSnapshot : ModelSnapshot
+    [Migration("20171212162828_Add Order to Page")]
+    partial class AddOrdertoPage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.Activity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50);
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Activities");
-                });
-
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.ActivityStamp", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ActivityId");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(150);
-
-                    b.Property<bool>("IsActive");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityId");
-
-                    b.ToTable("ActivityStamps");
-                });
-
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.Book", b =>
+            modelBuilder.Entity("Workbook_server.Persistance.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -88,7 +43,7 @@ namespace Workbook_server.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.Page", b =>
+            modelBuilder.Entity("Workbook_server.Persistance.Entities.Page", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -114,7 +69,7 @@ namespace Workbook_server.Migrations
                     b.ToTable("Pages");
                 });
 
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.User", b =>
+            modelBuilder.Entity("Workbook_server.Persistance.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -136,33 +91,17 @@ namespace Workbook_server.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.Activity", b =>
+            modelBuilder.Entity("Workbook_server.Persistance.Entities.Book", b =>
                 {
-                    b.HasOne("Workbook_server.Persistence.Entities.User", "User")
+                    b.HasOne("Workbook_server.Persistance.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.ActivityStamp", b =>
+            modelBuilder.Entity("Workbook_server.Persistance.Entities.Page", b =>
                 {
-                    b.HasOne("Workbook_server.Persistence.Entities.Activity", "Activity")
-                        .WithMany()
-                        .HasForeignKey("ActivityId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.Book", b =>
-                {
-                    b.HasOne("Workbook_server.Persistence.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Workbook_server.Persistence.Entities.Page", b =>
-                {
-                    b.HasOne("Workbook_server.Persistence.Entities.Book", "Book")
+                    b.HasOne("Workbook_server.Persistance.Entities.Book", "Book")
                         .WithMany("Pages")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);

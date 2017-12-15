@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Workbook_server.Persistance.Entities
+namespace Workbook_server.Persistence.Entities
 {
 
     public class Base 

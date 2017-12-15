@@ -1,6 +1,6 @@
 using System;
 
-namespace Workbook_server.Persistance.Entities
+namespace Workbook_server.Persistence.Entities
 {
 
     public class User : Base

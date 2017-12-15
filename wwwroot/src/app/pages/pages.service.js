@@ -21,6 +21,14 @@ export class PagesService {
 
     };
 
+    MapPage(page) {
+
+        const { id, title, text, bookId } = page;
+        
+        return { id, title, text, bookId };
+
+    };
+
     AddBookPage(page) {
 
         return this._http.post("/api/books/" + page.bookId + "/pages", page)

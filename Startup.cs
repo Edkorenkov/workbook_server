@@ -15,8 +15,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Workbook_server.Common;
-using Workbook_server.Persistance;
-using Workbook_server.Persistance.Repositories;
+using Workbook_server.Persistence;
+using Workbook_server.Persistence.Repositories;
 using Workbook_server.Services;
 
 namespace Workbook_server

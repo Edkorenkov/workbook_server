@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Workbook_server.Persistance.Entities
+namespace Workbook_server.Persistence.Entities
 {
     public class Book : Base
     {

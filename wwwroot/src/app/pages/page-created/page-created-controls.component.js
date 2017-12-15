@@ -17,14 +17,38 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 })
 export class PageCreatedControlsComponent {
 
+    @Output() onPrevPage = new EventEmitter();
+
+    @Output() onNextPage = new EventEmitter();
+
     @Output() onEditPage = new EventEmitter();
+
+    @Output() onClonePage = new EventEmitter();
 
     @Output() onDeletePage = new EventEmitter();
 
 
+    PrevPage() {
+
+        this.onPrevPage.emit();
+
+    };
+
+    NextPage() {
+
+        this.onNextPage.emit();
+
+    };
+
     EditPage() {
 
         this.onEditPage.emit();
+
+    };
+
+    ClonePage() {
+
+        this.onClonePage.emit();
 
     };
 

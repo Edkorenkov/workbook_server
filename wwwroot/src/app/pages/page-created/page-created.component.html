@@ -1,7 +1,10 @@
 
 <div class="container pages__editor">
 
-    <page-created-controls (onEditPage)="EditPage(page);"
+    <page-created-controls (onPrevPage)="PrevPage(page);"
+                           (onNextPage)="NextPage(page);"
+                           (onEditPage)="EditPage(page);"
+                           (onClonePage)="ClonePage(page);"
                            (onDeletePage)="DeletePage(page);"></page-created-controls>
 
     <div class="pages__editor-canvas">

@@ -11,9 +11,10 @@ using Workbook_server.Persistence;
 namespace Workbook_server.Migrations
 {
     [DbContext(typeof(WorkbookContext))]
-    partial class WorkbookContextModelSnapshot : ModelSnapshot
+    [Migration("20171215080636_Add Activities Tables")]
+    partial class AddActivitiesTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
