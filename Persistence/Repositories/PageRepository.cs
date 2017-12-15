@@ -19,7 +19,24 @@ namespace Workbook_server.Persistence.Repositories
 
         public IEnumerable<Page> GetPagesByBookId(int bookId)
         {
-            return _context.Pages.Where(x => x.BookId == bookId && x.IsActive).ToList();
+            return _context.Pages
+            
+                .Where(x => x.BookId == bookId && x.IsActive)
+                
+                .OrderBy(x => x.Order)
+
+                .ToList();
+        }
+
+        public IEnumerable<Page> GetPagesByLimitOrder(int bookId, int pageOrder) 
+        {
+            return _context.Pages
+            
+                .Where(x => x.BookId == bookId && x.Order > pageOrder && x.IsActive)
+                
+                .OrderBy(x => x.Order)
+
+                .ToList();
         }
 
         public Page GetPageById(int pageId)
@@ -27,22 +44,49 @@ namespace Workbook_server.Persistence.Repositories
             return _context.Pages.FirstOrDefault(x => x.Id == pageId && x.IsActive);
         }
 
-        public int AddPage(Page page)
+        public Page GetPageByOrder(int pageOrder)
         {
-                  
+            return _context.Pages.FirstOrDefault(x => x.Order == pageOrder && x.IsActive);
+        }
+
+        public Page GetLastPageByBookId(int bookId)
+        {
+            return _context.Pages
+
+                .Where(x => x.BookId == bookId && x.IsActive)
+
+                .OrderBy(x => x.Order)
+
+                .LastOrDefault();
+        }
+
+        public int AddPage(Page page)
+        {           
+            var lastPage = this.GetLastPageByBookId(page.BookId);
+
+            var pageOrder = 1;
+
+            if (lastPage != null) 
+            {
+                pageOrder += lastPage.Order;
+            };
+          
             page.IsActive = true;
+
+            page.Order = pageOrder;
+
 
             _context.Pages.Add(page);
 
             _context.SaveChanges();
 
-            return page.Id;     
+            return page.Order;     
         }
 
-        public int EditPage(int pageId, string pageTitle, string pageText) 
+        public int EditPageByOrder(int pageOrder, string pageTitle, string pageText) 
         {
 
-            var page = this.GetPageById(pageId);
+            var page = this.GetPageByOrder(pageOrder);
 
 
             page.Title = pageTitle;
@@ -54,15 +98,23 @@ namespace Workbook_server.Persistence.Repositories
 
             _context.SaveChanges();
 
-            return page.Id;
+            return page.Order;
 
         }
 
-        public int DeletePage(int pageId) 
+        public int DeletePageByOrder(int pageOrder) 
         {
 
-            var page = this.GetPageById(pageId);
+            var page = this.GetPageByOrder(pageOrder);
 
+            var limitPages = this.GetPagesByLimitOrder(page.BookId, page.Order);
+
+
+            foreach(var limitPage in limitPages) 
+            {
+                limitPage.Order -= 1;
+            };
+            
 
             page.IsActive = false;
 
@@ -71,7 +123,7 @@ namespace Workbook_server.Persistence.Repositories
 
             _context.SaveChanges();
 
-            return page.Id;
+            return page.Order;
 
         }
 

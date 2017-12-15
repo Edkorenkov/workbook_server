@@ -55,7 +55,7 @@ export const AppRoutes = [
 
             { path: ":bookId/pages/create", component: PageInitComponent, },
 
-            { path: ":bookId/pages/:pageId", component: PageCreatedComponent, },
+            { path: ":bookId/pages/:pageOrder", component: PageCreatedComponent, },
 
         ],
 

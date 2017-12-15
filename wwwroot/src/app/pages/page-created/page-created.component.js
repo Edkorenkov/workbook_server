@@ -33,7 +33,7 @@ export class PageCreatedComponent {
         
             .subscribe(params => {
 
-                this._pagesService.GetPageById(+params["bookId"], +params["pageId"])
+                this._pagesService.GetPageByOrder(+params["bookId"], +params["pageOrder"])
 
                     .subscribe(
                         page => this.page = page,
@@ -46,12 +46,12 @@ export class PageCreatedComponent {
 
     PrevPage(currentPage) {
 
-        this._pagesService.GetPageById(currentPage.bookId, currentPage.id - 1)
+        this._pagesService.GetPageByOrder(currentPage.bookId, currentPage.order - 1)
 
             .subscribe(
                 page => {
 
-                    this._router.navigate(["/books", page.bookId, "pages", page.id]);
+                    this._router.navigate(["/books", page.bookId, "pages", page.order]);
 
                 },
                 error => console.log(error)
@@ -61,12 +61,12 @@ export class PageCreatedComponent {
 
     NextPage(currentPage) {
 
-        this._pagesService.GetPageById(currentPage.bookId, currentPage.id + 1)
+        this._pagesService.GetPageByOrder(currentPage.bookId, currentPage.order + 1)
 
             .subscribe(
                 page => {
 
-                    this._router.navigate(["/books", page.bookId, "pages", page.id]);
+                    this._router.navigate(["/books", page.bookId, "pages", page.order]);
 
                 },
                 error => console.log(error)
@@ -110,7 +110,7 @@ export class PageCreatedComponent {
 
                     console.log(createdPage);
 
-                    this._router.navigate(["/books", createdPage.bookId, "pages", createdPage.id]);
+                    this._router.navigate(["/books", createdPage.bookId, "pages", createdPage.order]);
 
                 },
                 error => console.log(error)

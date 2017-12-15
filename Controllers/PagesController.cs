@@ -53,13 +53,13 @@ namespace Workbook_server.Controllers
             return Ok(userBookPages);
         }
 
-        [HttpGet("{pageId}")]
-        public IActionResult GetPage(int pageId)
+        [HttpGet("{pageOrder}")]
+        public IActionResult GetPage(int pageOrder)
         {
 
             var userId = this.GetAuthorizeUserId();
 
-            var page = this._pageRepository.GetPageById(pageId);
+            var page = this._pageRepository.GetPageByOrder(pageOrder);
 
             return Ok(TinyMapper.Map<PageModel>(page));
         }
@@ -85,25 +85,25 @@ namespace Workbook_server.Controllers
 
         }
 
-        [HttpPut("{pageId}")]
-        public IActionResult Update([FromRoute]int pageId, [FromBody]UpdatePageModel model)
+        [HttpPut("{pageOrder}")]
+        public IActionResult Update([FromRoute]int pageOrder, [FromBody]UpdatePageModel model)
         {
 
             var userId = this.GetAuthorizeUserId();
 
-            this._pageRepository.EditPage(model.Id, model.Title, model.Text);
+            this._pageRepository.EditPageByOrder(pageOrder, model.Title, model.Text);
 
             return new NoContentResult();
 
         }
 
-        [HttpDelete("{pageId}")]
-        public IActionResult Delete([FromRoute]int pageId)
+        [HttpDelete("{pageOrder}")]
+        public IActionResult Delete([FromRoute]int pageOrder)
         {
 
             var userId = this.GetAuthorizeUserId();
 
-            this._pageRepository.DeletePage(pageId);
+            this._pageRepository.DeletePageByOrder(pageOrder);
 
             return new NoContentResult();
 

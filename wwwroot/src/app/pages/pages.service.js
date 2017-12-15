@@ -13,9 +13,9 @@ export class PagesService {
 
     };
 
-    GetPageById(bookId, pageId) {
+    GetPageByOrder(bookId, pageOrder) {
 
-        return this._http.get("/api/books/" + bookId + "/pages/" + pageId)
+        return this._http.get("/api/books/" + bookId + "/pages/" + pageOrder)
 
             .map(response => response.json());
 
@@ -23,9 +23,19 @@ export class PagesService {
 
     MapPage(page) {
 
-        const { id, title, text, bookId } = page;
-        
-        return { id, title, text, bookId };
+        return {
+
+            id: page.id,
+
+            order: page.order,
+
+            title: page.title,
+
+            text: page.text,
+
+            bookId: page.bookId,
+
+        };
 
     };
 
@@ -39,7 +49,7 @@ export class PagesService {
 
     EditBookPage(page) {
 
-        return this._http.put("/api/books/" + page.bookId + "/pages/" + page.id, page)
+        return this._http.put("/api/books/" + page.bookId + "/pages/" + page.order, page)
 
             .map(response => response.json());
 
@@ -47,7 +57,7 @@ export class PagesService {
 
     DeleteBookPage(page) {
 
-        return this._http.delete("/api/books/" + page.bookId + "/pages/" + page.id)
+        return this._http.delete("/api/books/" + page.bookId + "/pages/" + page.order)
 
             .map(response => response.json());
 

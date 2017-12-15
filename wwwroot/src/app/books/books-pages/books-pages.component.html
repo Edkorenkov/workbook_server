@@ -18,7 +18,7 @@
 
         <div class="book__pages-list__page"
              *ngFor="let page of pages"
-             [routerLink]="['/books', bookId, 'pages', page.id]">
+             [routerLink]="['/books', bookId, 'pages', page.order]">
 
             <div class="book__pages-list__page-content">
 

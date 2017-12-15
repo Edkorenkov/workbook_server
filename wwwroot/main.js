@@ -103,23 +103,30 @@ var PagesService = exports.PagesService = (_dec = (0, _core.Injectable)(), _dec(
     }
 
     _createClass(PagesService, [{
-        key: "GetPageById",
-        value: function GetPageById(bookId, pageId) {
+        key: "GetPageByOrder",
+        value: function GetPageByOrder(bookId, pageOrder) {
 
-            return this._http.get("/api/books/" + bookId + "/pages/" + pageId).map(function (response) {
+            return this._http.get("/api/books/" + bookId + "/pages/" + pageOrder).map(function (response) {
                 return response.json();
             });
         }
     }, {
         key: "MapPage",
         value: function MapPage(page) {
-            var id = page.id,
-                title = page.title,
-                text = page.text,
-                bookId = page.bookId;
 
+            return {
 
-            return { id: id, title: title, text: text, bookId: bookId };
+                id: page.id,
+
+                order: page.order,
+
+                title: page.title,
+
+                text: page.text,
+
+                bookId: page.bookId
+
+            };
         }
     }, {
         key: "AddBookPage",
@@ -133,7 +140,7 @@ var PagesService = exports.PagesService = (_dec = (0, _core.Injectable)(), _dec(
         key: "EditBookPage",
         value: function EditBookPage(page) {
 
-            return this._http.put("/api/books/" + page.bookId + "/pages/" + page.id, page).map(function (response) {
+            return this._http.put("/api/books/" + page.bookId + "/pages/" + page.order, page).map(function (response) {
                 return response.json();
             });
         }
@@ -141,7 +148,7 @@ var PagesService = exports.PagesService = (_dec = (0, _core.Injectable)(), _dec(
         key: "DeleteBookPage",
         value: function DeleteBookPage(page) {
 
-            return this._http.delete("/api/books/" + page.bookId + "/pages/" + page.id).map(function (response) {
+            return this._http.delete("/api/books/" + page.bookId + "/pages/" + page.order).map(function (response) {
                 return response.json();
             });
         }
@@ -2981,7 +2988,7 @@ var AppRoutes = exports.AppRoutes = [{
 
         component: _books.BooksComponent,
 
-        children: [{ path: ":bookId/pages", component: _booksPages.BooksPagesComponent }, { path: ":bookId/pages/create", component: _pages.PageInitComponent }, { path: ":bookId/pages/:pageId", component: _pages.PageCreatedComponent }],
+        children: [{ path: ":bookId/pages", component: _booksPages.BooksPagesComponent }, { path: ":bookId/pages/create", component: _pages.PageInitComponent }, { path: ":bookId/pages/:pageOrder", component: _pages.PageCreatedComponent }],
 
         canActivate: [_auth.AuthGuard]
 
@@ -3771,7 +3778,7 @@ Reflect.defineMetadata("design:paramtypes", [_router.ActivatedRoute, _booksPages
 /***/ 767:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"book__pages\">\r\n\r\n    <div class=\"book__pages-toolbar clearfix\">\r\n\r\n        <div class=\"book__pages-toolbar__control\"\r\n             [routerLink]=\"['/books', bookId, 'pages', 'create']\">\r\n\r\n            <span class=\"book__pages-toolbar__control-icon jam jam-plus\"></span>\r\n\r\n            <span class=\"book__pages-toolbar__control-title\">Add new page</span>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"book__pages-list clearfix\">\r\n\r\n        <div class=\"book__pages-list__page\"\r\n             *ngFor=\"let page of pages\"\r\n             [routerLink]=\"['/books', bookId, 'pages', page.id]\">\r\n\r\n            <div class=\"book__pages-list__page-content\">\r\n\r\n                <div class=\"book__pages-list__page-date\">{{ page?.dateCreated }}</div>\r\n\r\n                <h2 class=\"book__pages-list__page-title\">{{ page?.title }}</h2>\r\n\r\n                <p class=\"book__pages-list__page-text\">{{ page?.text }}</p>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
+module.exports = "\r\n<div class=\"book__pages\">\r\n\r\n    <div class=\"book__pages-toolbar clearfix\">\r\n\r\n        <div class=\"book__pages-toolbar__control\"\r\n             [routerLink]=\"['/books', bookId, 'pages', 'create']\">\r\n\r\n            <span class=\"book__pages-toolbar__control-icon jam jam-plus\"></span>\r\n\r\n            <span class=\"book__pages-toolbar__control-title\">Add new page</span>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"book__pages-list clearfix\">\r\n\r\n        <div class=\"book__pages-list__page\"\r\n             *ngFor=\"let page of pages\"\r\n             [routerLink]=\"['/books', bookId, 'pages', page.order]\">\r\n\r\n            <div class=\"book__pages-list__page-content\">\r\n\r\n                <div class=\"book__pages-list__page-date\">{{ page?.dateCreated }}</div>\r\n\r\n                <h2 class=\"book__pages-list__page-title\">{{ page?.title }}</h2>\r\n\r\n                <p class=\"book__pages-list__page-text\">{{ page?.text }}</p>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -4042,7 +4049,7 @@ var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Comp
 
             this._route.params.subscribe(function (params) {
 
-                _this._pagesService.GetPageById(+params["bookId"], +params["pageId"]).subscribe(function (page) {
+                _this._pagesService.GetPageByOrder(+params["bookId"], +params["pageOrder"]).subscribe(function (page) {
                     return _this.page = page;
                 }, function (error) {
                     return console.log(error);
@@ -4054,9 +4061,9 @@ var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Comp
         value: function PrevPage(currentPage) {
             var _this2 = this;
 
-            this._pagesService.GetPageById(currentPage.bookId, currentPage.id - 1).subscribe(function (page) {
+            this._pagesService.GetPageByOrder(currentPage.bookId, currentPage.order - 1).subscribe(function (page) {
 
-                _this2._router.navigate(["/books", page.bookId, "pages", page.id]);
+                _this2._router.navigate(["/books", page.bookId, "pages", page.order]);
             }, function (error) {
                 return console.log(error);
             });
@@ -4066,9 +4073,9 @@ var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Comp
         value: function NextPage(currentPage) {
             var _this3 = this;
 
-            this._pagesService.GetPageById(currentPage.bookId, currentPage.id + 1).subscribe(function (page) {
+            this._pagesService.GetPageByOrder(currentPage.bookId, currentPage.order + 1).subscribe(function (page) {
 
-                _this3._router.navigate(["/books", page.bookId, "pages", page.id]);
+                _this3._router.navigate(["/books", page.bookId, "pages", page.order]);
             }, function (error) {
                 return console.log(error);
             });
@@ -4106,7 +4113,7 @@ var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Comp
 
                 console.log(createdPage);
 
-                _this4._router.navigate(["/books", createdPage.bookId, "pages", createdPage.id]);
+                _this4._router.navigate(["/books", createdPage.bookId, "pages", createdPage.order]);
             }, function (error) {
                 return console.log(error);
             });
