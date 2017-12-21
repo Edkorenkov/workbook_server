@@ -36,7 +36,7 @@ export class BooksComponent {
 
 	ngOnInit() {
 
-		this._booksService.GetBooks()
+		this.bookSubscription = this._booksService.GetBooks()
 
 			.subscribe(
 				books => this.books = books,
@@ -46,6 +46,12 @@ export class BooksComponent {
 
 				}
 			);
+
+	};
+
+	ngOnDestroy() {
+
+		this.bookSubscription.unsubscribe();
 
 	};
 
@@ -88,49 +94,5 @@ export class BooksComponent {
         this.searchBookQuery = queryString;
 
     };
-
-	// CreateEmptyBook() {
-
-	// 	let lastEmptyBook = this._booksService.GetLastEmptyBook(this.books);
-
-	// 	if (lastEmptyBook) {
-
-	// 		this.DiscardEmptyBook(lastEmptyBook);
-
-	// 	};
-
-	// 	let book = this._booksService.CreateEmptyBook();
-
-	// 	let lastBook = this._booksService.GetLastBook(this.books);
-
-	// 	if (lastBook) {
-
-	// 		book.id = lastBook.id + 1;
-
-	// 	};
-
-	// 	book.id = 1;
-
-	// 	this.books.push(book);
-
-	// };
-
-	// SaveEmptyBook(book) {
-
-	// 	if (!book.title) {
-
-	// 		book.title = DefaultBookTitle;
-
-	// 	};
-
-	// 	book.isNewer = false;
-
-	// };
-
-	// DiscardEmptyBook(book) {
-
-	// 	this.books.pop();
-
-	// };
 
 }

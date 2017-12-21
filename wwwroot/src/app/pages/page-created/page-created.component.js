@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 import { PagesService } from "../pages.service";
 
+import { AlertsService } from "../../shared/alerts/alerts.service";
+
 
 @Component({
 
@@ -15,13 +17,15 @@ import { PagesService } from "../pages.service";
 })
 export class PageCreatedComponent {
 
-    constructor(router: Router, route: ActivatedRoute, pagesService: PagesService) {
+    constructor(router: Router, route: ActivatedRoute, pagesService: PagesService, alertsService: AlertsService) {
 
         this._router = router;
 
         this._route = route;
 
         this._pagesService = pagesService;
+
+        this._alertsService = alertsService;
 
         this.page = { title: "", text: "", dateCreated: null };
 
@@ -87,7 +91,13 @@ export class PageCreatedComponent {
         this._pagesService.EditBookPage(newPage)
 
             .subscribe(
-                done => console.log(done),
+                done => {
+
+                    console.log(done);
+
+                    this._alertsService.Success("Success", "Saved");
+
+                },
                 error => console.log(error)
             );
 

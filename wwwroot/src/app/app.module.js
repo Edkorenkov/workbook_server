@@ -27,6 +27,8 @@ import { BooksComponent, BooksListComponent, BooksSearchComponent, BooksService,
 import { BooksPagesComponent, BooksPagesService } from "./books/books-pages";
 
 import { PagesService, PageInitComponent, PageInitControlsComponent, PageCreatedComponent, PageCreatedControlsComponent } from "./pages";
+import AlertsComponent from "./shared/alerts/alerts.component";
+import { AlertsService } from "./shared/alerts/alerts.service";
 
 
 
@@ -47,6 +49,7 @@ import { PagesService, PageInitComponent, PageInitControlsComponent, PageCreated
     declarations: [
         
         AppComponent,
+        AlertsComponent,
         SigninComponent,
         SignupComponent,
         SidebarComponent,
@@ -68,6 +71,7 @@ import { PagesService, PageInitComponent, PageInitControlsComponent, PageCreated
         AuthGuard,
         AuthService,      
         { provide: RequestOptions, useClass: AuthRequest },
+        AlertsService,
         BooksService,
         PagesService,
         BooksPagesService,
