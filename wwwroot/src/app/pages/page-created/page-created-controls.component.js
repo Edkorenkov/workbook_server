@@ -23,6 +23,8 @@ export class PageCreatedControlsComponent {
 
     @Output() onEditPage = new EventEmitter();
 
+    @Output() onDownloadPage = new EventEmitter();
+
     @Output() onClonePage = new EventEmitter();
 
     @Output() onDeletePage = new EventEmitter();
@@ -43,6 +45,12 @@ export class PageCreatedControlsComponent {
     EditPage() {
 
         this.onEditPage.emit();
+
+    };
+
+    DownloadPage() {
+
+        this.onDownloadPage.emit();
 
     };
 

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +64,20 @@ namespace Workbook_server.Controllers
             var page = this._pageRepository.GetPageByOrder(pageOrder);
 
             return Ok(TinyMapper.Map<PageModel>(page));
+        }
+
+        [HttpGet("{pageOrder}/download")]
+        public IActionResult Download(int pageOrder)
+        {
+
+            var userId = this.GetAuthorizeUserId();
+
+            var page = this._pageRepository.GetPageByOrder(pageOrder);
+
+            var bytes = Encoding.Unicode.GetBytes(page.Text);
+
+
+            return File(bytes, "application/x-msdownload");
         }
 
         [HttpPost]

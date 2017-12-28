@@ -7,6 +7,8 @@ import { PagesService } from "../pages.service";
 
 import { AlertsService } from "../../shared/alerts/alerts.service";
 
+import Rx from "rxjs";
+
 
 @Component({
 
@@ -98,6 +100,23 @@ export class PageCreatedComponent {
                     this._alertsService.Success("Success", "Saved");
 
                 },
+                error => console.log(error)
+            );
+
+    };
+
+    DownloadPage(page) {
+
+        this._pagesService.DownloadBookPage(page)
+
+            .subscribe(
+              
+                done => {
+
+                    console.log(done);
+
+                },
+
                 error => console.log(error)
             );
 

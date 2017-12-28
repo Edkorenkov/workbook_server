@@ -1,7 +1,7 @@
 
 import { Injectable } from "@angular/core";
 
-import { Http } from "@angular/http";
+import { Http, ResponseContentType } from "@angular/http";
 
 
 @Injectable()
@@ -52,6 +52,21 @@ export class PagesService {
         return this._http.put("/api/books/" + page.bookId + "/pages/" + page.order, page)
 
             .map(response => response.json());
+
+    };
+
+    DownloadBookPage(page) {
+
+        return this._http.get("/api/books/" + page.bookId + "/pages/" + page.order + "/download")
+
+            .map(response => response.json());
+
+
+        // {
+
+        //     responseType: ResponseContentType.Blob
+        // })
+        //     .map(response => new Blob([response.json()], { type: "application/x-msdownload" }));
 
     };
 

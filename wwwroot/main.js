@@ -1,5 +1,77 @@
 webpackJsonp([1],{
 
+/***/ 100:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _auth = __webpack_require__(749);
+
+Object.keys(_auth).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _auth[key];
+    }
+  });
+});
+
+var _auth2 = __webpack_require__(147);
+
+Object.keys(_auth2).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _auth2[key];
+    }
+  });
+});
+
+var _auth3 = __webpack_require__(750);
+
+Object.keys(_auth3).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _auth3[key];
+    }
+  });
+});
+
+var _auth4 = __webpack_require__(751);
+
+Object.keys(_auth4).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _auth4[key];
+    }
+  });
+});
+
+var _auth5 = __webpack_require__(752);
+
+Object.keys(_auth5).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _auth5[key];
+    }
+  });
+});
+
+/***/ }),
+
 /***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -145,6 +217,20 @@ var PagesService = exports.PagesService = (_dec = (0, _core.Injectable)(), _dec(
             });
         }
     }, {
+        key: "DownloadBookPage",
+        value: function DownloadBookPage(page) {
+
+            return this._http.get("/api/books/" + page.bookId + "/pages/" + page.order + "/download").map(function (response) {
+                return response.json();
+            });
+
+            // {
+
+            //     responseType: ResponseContentType.Blob
+            // })
+            //     .map(response => new Blob([response.json()], { type: "application/x-msdownload" }));
+        }
+    }, {
         key: "DeleteBookPage",
         value: function DeleteBookPage(page) {
 
@@ -178,7 +264,7 @@ var _dec, _class;
 
 var _core = __webpack_require__(6);
 
-var _rxjs = __webpack_require__(137);
+var _rxjs = __webpack_require__(93);
 
 var _rxjs2 = _interopRequireDefault(_rxjs);
 
@@ -234,7 +320,7 @@ var _core = __webpack_require__(6);
 
 var _router = __webpack_require__(27);
 
-var _auth = __webpack_require__(99);
+var _auth = __webpack_require__(100);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -307,7 +393,7 @@ var _core = __webpack_require__(6);
 
 var _router = __webpack_require__(27);
 
-var _auth = __webpack_require__(99);
+var _auth = __webpack_require__(100);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2950,7 +3036,7 @@ var _http = __webpack_require__(60);
 
 var _app = __webpack_require__(748);
 
-var _auth = __webpack_require__(99);
+var _auth = __webpack_require__(100);
 
 var _app2 = __webpack_require__(779);
 
@@ -3020,7 +3106,7 @@ var _booksPages = __webpack_require__(300);
 
 var _pages = __webpack_require__(302);
 
-var _auth = __webpack_require__(99);
+var _auth = __webpack_require__(100);
 
 var AppRoutes = exports.AppRoutes = [{
 
@@ -4089,6 +4175,12 @@ var _pages = __webpack_require__(148);
 
 var _alerts = __webpack_require__(149);
 
+var _rxjs = __webpack_require__(93);
+
+var _rxjs2 = _interopRequireDefault(_rxjs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Component)({
@@ -4172,6 +4264,23 @@ var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Comp
             });
         }
     }, {
+        key: "DownloadPage",
+        value: function DownloadPage(page) {
+
+            this._pagesService.DownloadBookPage(page).subscribe(function (done) {
+
+                console.log(done);
+
+                // var blob = new Blob([done], { type: 'text/csv' });
+
+                // var url= ;
+
+                //window.open(window.URL.createObjectURL(done));
+            }, function (error) {
+                return console.log(error);
+            });
+        }
+    }, {
         key: "ClonePage",
         value: function ClonePage(page) {
             var _this5 = this;
@@ -4235,7 +4344,7 @@ var INFO = exports.INFO = "Info";
 /***/ 776:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container pages__editor\">\r\n\r\n    <page-created-controls (onPrevPage)=\"PrevPage(page);\"\r\n                           (onNextPage)=\"NextPage(page);\"\r\n                           (onEditPage)=\"EditPage(page);\"\r\n                           (onClonePage)=\"ClonePage(page);\"\r\n                           (onDeletePage)=\"DeletePage(page);\"></page-created-controls>\r\n\r\n    <div class=\"pages__editor-canvas\">\r\n\r\n        <h5 class=\"pages__editor-canvas__time\">{{ page.dateCreated }}</h5>\r\n\r\n        <div class=\"editor-content\">\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <input type=\"text\"\r\n                           class=\"pages__editor-canvas__title\" \r\n                           placeholder=\"Create title...\"\r\n                           [(ngModel)]=\"page.title\" />\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <textarea class=\"pages__editor-canvas__text\"\r\n                              placeholder=\"Write your ideas here...\"\r\n                              [(ngModel)]=\"page.text\"></textarea>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
+module.exports = "\r\n<div class=\"container pages__editor\">\r\n\r\n    <page-created-controls (onPrevPage)=\"PrevPage(page);\"\r\n                           (onNextPage)=\"NextPage(page);\"\r\n                           (onEditPage)=\"EditPage(page);\"\r\n                           (onDownloadPage)=\"DownloadPage(page);\"\r\n                           (onClonePage)=\"ClonePage(page);\"\r\n                           (onDeletePage)=\"DeletePage(page);\"></page-created-controls>\r\n\r\n    <div class=\"pages__editor-canvas\">\r\n\r\n        <h5 class=\"pages__editor-canvas__time\">{{ page.dateCreated }}</h5>\r\n\r\n        <div class=\"editor-content\">\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <input type=\"text\"\r\n                           class=\"pages__editor-canvas__title\" \r\n                           placeholder=\"Create title...\"\r\n                           [(ngModel)]=\"page.title\" />\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <textarea class=\"pages__editor-canvas__text\"\r\n                              placeholder=\"Write your ideas here...\"\r\n                              [(ngModel)]=\"page.text\"></textarea>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -4252,7 +4361,7 @@ exports.PageCreatedControlsComponent = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 
 var _core = __webpack_require__(6);
 
@@ -4309,7 +4418,7 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
 
     styles: [__webpack_require__(304)]
 
-}), _dec2 = (0, _core.Output)(), _dec3 = (0, _core.Output)(), _dec4 = (0, _core.Output)(), _dec5 = (0, _core.Output)(), _dec6 = (0, _core.Output)(), _dec(_class = (_class2 = function () {
+}), _dec2 = (0, _core.Output)(), _dec3 = (0, _core.Output)(), _dec4 = (0, _core.Output)(), _dec5 = (0, _core.Output)(), _dec6 = (0, _core.Output)(), _dec7 = (0, _core.Output)(), _dec(_class = (_class2 = function () {
     function PageCreatedControlsComponent() {
         _classCallCheck(this, PageCreatedControlsComponent);
 
@@ -4319,9 +4428,11 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
 
         _initDefineProp(this, "onEditPage", _descriptor3, this);
 
-        _initDefineProp(this, "onClonePage", _descriptor4, this);
+        _initDefineProp(this, "onDownloadPage", _descriptor4, this);
 
-        _initDefineProp(this, "onDeletePage", _descriptor5, this);
+        _initDefineProp(this, "onClonePage", _descriptor5, this);
+
+        _initDefineProp(this, "onDeletePage", _descriptor6, this);
     }
 
     _createClass(PageCreatedControlsComponent, [{
@@ -4341,6 +4452,12 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
         value: function EditPage() {
 
             this.onEditPage.emit();
+        }
+    }, {
+        key: "DownloadPage",
+        value: function DownloadPage() {
+
+            this.onDownloadPage.emit();
         }
     }, {
         key: "ClonePage",
@@ -4372,12 +4489,17 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
     initializer: function initializer() {
         return new _core.EventEmitter();
     }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "onClonePage", [_dec5], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "onDownloadPage", [_dec5], {
     enumerable: true,
     initializer: function initializer() {
         return new _core.EventEmitter();
     }
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "onDeletePage", [_dec6], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "onClonePage", [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+        return new _core.EventEmitter();
+    }
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "onDeletePage", [_dec7], {
     enumerable: true,
     initializer: function initializer() {
         return new _core.EventEmitter();
@@ -4390,7 +4512,7 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
 /***/ 778:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"pages__editor-controls clearfix\">\r\n\r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"PrevPage();\">\r\n\r\n            <span class=\"jam jam-arrow-left\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"NextPage();\">\r\n\r\n            <span class=\"jam jam-arrow-right\"></span>\r\n\r\n        </div>\r\n\r\n    </div>\r\n    \r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"EditPage();\">\r\n\r\n            <span class=\"jam jam-check\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\">\r\n\r\n            <span class=\"jam jam-download\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"ClonePage();\">\r\n\r\n            <span class=\"jam jam-files\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"DeletePage();\">\r\n\r\n            <span class=\"jam jam-trash-f\"></span>\r\n\r\n        </div>\r\n        \r\n    </div>\r\n\r\n</div>"
+module.exports = "\r\n<div class=\"pages__editor-controls clearfix\">\r\n\r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"PrevPage();\">\r\n\r\n            <span class=\"jam jam-arrow-left\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"NextPage();\">\r\n\r\n            <span class=\"jam jam-arrow-right\"></span>\r\n\r\n        </div>\r\n\r\n    </div>\r\n    \r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"EditPage();\">\r\n\r\n            <span class=\"jam jam-check\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n             (click)=\"DownloadPage();\">\r\n\r\n            <span class=\"jam jam-download\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"ClonePage();\">\r\n\r\n            <span class=\"jam jam-files\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"DeletePage();\">\r\n\r\n            <span class=\"jam jam-trash-f\"></span>\r\n\r\n        </div>\r\n        \r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -4497,7 +4619,7 @@ var _core = __webpack_require__(6);
 
 var _alerts = __webpack_require__(149);
 
-var _rxjs = __webpack_require__(137);
+var _rxjs = __webpack_require__(93);
 
 var _rxjs2 = _interopRequireDefault(_rxjs);
 
@@ -4531,10 +4653,6 @@ var AlertsComponent = (_dec = (0, _core.Component)({
 
                 _this.alerts.push(alert);
             });
-
-            _rxjs2.default.Observable.from(this.alerts).delay(2000).subscribe(function (x) {
-                return console.log(x);
-            });
         }
     }]);
 
@@ -4556,78 +4674,6 @@ module.exports = "\r\n<ul class=\"alerts\">\r\n\r\n    <li class=\"alerts__box\"
 /***/ (function(module, exports) {
 
 module.exports = "\r\n.alerts { \r\n\r\n    position: absolute;\r\n\r\n    bottom: 0;\r\n\r\n    right: 10px;\r\n\r\n    list-style: none;\r\n\r\n    margin: 0;\r\n\r\n    padding: 0;\r\n\r\n}\r\n\r\n.alerts__box {\r\n\r\n    padding: 15px;\r\n\r\n    width: 350px;\r\n\r\n    margin: 10px 0;\r\n\r\n    background-color: #0b9b57;\r\n\r\n    color: #ffffff;\r\n\r\n    font-size: 14px;\r\n\r\n    font-family: \"Roboto\";\r\n\r\n    font-weight: 500;\r\n    \r\n    line-height: 11px;\r\n\r\n}"
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _auth = __webpack_require__(749);
-
-Object.keys(_auth).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _auth[key];
-    }
-  });
-});
-
-var _auth2 = __webpack_require__(147);
-
-Object.keys(_auth2).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _auth2[key];
-    }
-  });
-});
-
-var _auth3 = __webpack_require__(750);
-
-Object.keys(_auth3).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _auth3[key];
-    }
-  });
-});
-
-var _auth4 = __webpack_require__(751);
-
-Object.keys(_auth4).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _auth4[key];
-    }
-  });
-});
-
-var _auth5 = __webpack_require__(752);
-
-Object.keys(_auth5).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _auth5[key];
-    }
-  });
-});
 
 /***/ })
 
