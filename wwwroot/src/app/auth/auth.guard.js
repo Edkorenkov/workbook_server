@@ -25,7 +25,9 @@ export class AuthGuard {
         const experationTime = this._authStore.GetTokenExperationTime();
 
 
-        //todo: work with date times    
+        //todo: work with date times   
+        
+        console.log("guard");
 
         if (!token) {
 

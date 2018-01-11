@@ -33,5 +33,13 @@ export class AuthService {
             .map(response => response.json());
 
     };
+
+    RefreshToken() {
+
+        return this._http.post(baseUrl + "/refresh")
+
+            .map(response => response.json());
+
+    };
     
 };

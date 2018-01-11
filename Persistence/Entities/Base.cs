@@ -16,7 +16,9 @@ namespace Workbook_server.Persistence.Entities
 
         public Base()
         {
-            DateCreated = DateModified = DateTime.Now;
+            IsActive = true;
+
+            DateCreated = DateModified = DateTime.Now;          
         }
 
     }

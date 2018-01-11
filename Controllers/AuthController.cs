@@ -23,13 +23,17 @@ namespace Learning_JWT.Controllers
         
         private readonly ISecurityService _securityService;
         private readonly IUserRepository _userRepository;
+        private readonly ITokenRepository _tokenRepository;
 
 
-        public AuthController(ISecurityService securityService, IUserRepository userRepository)
+        public AuthController(ISecurityService securityService, IUserRepository userRepository, ITokenRepository tokenRepository)
         {
 
             _securityService = securityService;
+
             _userRepository = userRepository;
+
+            _tokenRepository = tokenRepository;
 
         }
 
@@ -56,7 +60,7 @@ namespace Learning_JWT.Controllers
                 return Unauthorized();
             };
 
-            var securityResult = _securityService.CreateToken(user.Email);
+            var securityResult  =_securityService.RefreshToken(existingUser.Id);
 
             return Ok(securityResult);
 
@@ -81,9 +85,41 @@ namespace Learning_JWT.Controllers
 
             var userId = _userRepository.AddUser(TinyMapper.Map<User>(user));
 
-            var securityResult = _securityService.CreateToken(user.Email);
+
+            var securityResult = _securityService.RefreshToken(userId);
 
             return Created(string.Format("/api/users/{0}", userId), securityResult);
+
+        }
+
+        [AllowAnonymous]
+        [HttpGet("refresh/{token}")]
+        public IActionResult RefreshToken(string token)
+        {
+
+            var userClaim = this.User.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (userClaim == null) 
+            {
+                throw new UnauthorizedAccessException();
+            };
+            
+            var user = this._userRepository.GetUserByEmail(userClaim.Value);
+
+            if (user == null) 
+            {
+                throw new UnauthorizedAccessException();
+            };
+
+            var refreshToken = this._tokenRepository.GetTokenByUserId(user.Id);
+            
+            if (refreshToken.Value != token) 
+            {
+                throw new UnauthorizedAccessException();
+            };
+
+
+            return Ok();
 
         }
 

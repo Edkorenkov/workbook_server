@@ -1,0 +1,46 @@
+
+<sidebar></sidebar>
+
+<div class="activities__tags">
+    
+    <activities-tags></activities-tags>
+
+</div>
+
+<div class="activities">
+
+    <!-- <router-outlet></router-outlet> -->
+
+    <div class="activities__time">
+
+        <span class="jam jam-angle-left activities__time-control"
+              (click)="PrevYear(year);"></span>
+
+        <h2 class="activities__time-title">{{ year.name }}</h2>
+
+        <span class="jam jam-angle-right activities__time-control"
+              (click)="NextYear(year);"></span>
+
+    </div>
+
+    <div class="activities__time">
+
+        <span class="jam jam-angle-left"></span>
+
+        <h3>{{ month.name }}</h3>
+
+        <span class="jam jam-angle-right"></span>
+
+    </div>
+
+    <div class="activities__time">
+
+        <span class="jam jam-angle-left"></span>
+
+        <h3>{{ currentWeek.name }}</h3>
+
+        <span class="jam jam-angle-right"></span>
+
+    </div>
+
+</div>

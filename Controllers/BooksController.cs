@@ -13,6 +13,7 @@ using Workbook_server.Persistence.Repositories;
 
 namespace Workbook_server.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class BooksController : Controller
     {
@@ -37,7 +38,6 @@ namespace Workbook_server.Controllers
 
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -51,7 +51,6 @@ namespace Workbook_server.Controllers
             return Ok(userBooks);
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody]CreateBookModel model) 
         {
@@ -66,7 +65,6 @@ namespace Workbook_server.Controllers
 
         }
 
-        [Authorize]
         [HttpDelete("{bookId}")]
         public IActionResult Delete(int bookId) 
         {

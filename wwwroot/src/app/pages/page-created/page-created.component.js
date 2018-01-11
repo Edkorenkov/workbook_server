@@ -10,6 +10,11 @@ import { AlertsService } from "../../shared/alerts/alerts.service";
 import Rx from "rxjs";
 
 
+const EDIT_MESSAGE = "Page successfully edited.";
+
+const CLONE_MESSAGE = "Page successfully cloned.";
+
+
 @Component({
 
     templateUrl: "./page-created.component.html",
@@ -52,15 +57,15 @@ export class PageCreatedComponent {
 
     PrevPage(currentPage) {
 
+
         this._pagesService.GetPageByOrder(currentPage.bookId, currentPage.order - 1)
 
             .subscribe(
-                page => {
 
-                    this._router.navigate(["/books", page.bookId, "pages", page.order]);
+                page => this._router.navigate(["/books", page.bookId, "pages", page.order]),
 
-                },
-                error => console.log(error)
+                error => this._router.navigate(["/books", currentPage.bookId, "pages"])
+
             );
 
     };
@@ -70,12 +75,11 @@ export class PageCreatedComponent {
         this._pagesService.GetPageByOrder(currentPage.bookId, currentPage.order + 1)
 
             .subscribe(
-                page => {
+                
+                page => this._router.navigate(["/books", page.bookId, "pages", page.order]),
 
-                    this._router.navigate(["/books", page.bookId, "pages", page.order]);
+                error => this._router.navigate(["/books", currentPage.bookId, "pages"])
 
-                },
-                error => console.log(error)
             );
 
     };
@@ -95,9 +99,7 @@ export class PageCreatedComponent {
             .subscribe(
                 done => {
 
-                    console.log(done);
-
-                    this._alertsService.Success("Success", "Saved");
+                    this._alertsService.Success(EDIT_MESSAGE);
 
                 },
                 error => console.log(error)
@@ -137,7 +139,7 @@ export class PageCreatedComponent {
             .subscribe(
                 createdPage => {
 
-                    console.log(createdPage);
+                    this._alertsService.Success(CLONE_MESSAGE);
 
                     this._router.navigate(["/books", createdPage.bookId, "pages", createdPage.order]);
 

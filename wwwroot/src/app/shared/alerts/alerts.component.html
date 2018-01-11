@@ -2,7 +2,9 @@
 <ul class="alerts">
 
     <li class="alerts__box"
-        *ngFor="let alert of alerts">
+        *ngFor="let alert of alerts"
+        [ngClass]="{ 'alerts__box-success': alert.isSuccess, 'alerts__box-error': alert.isError }"
+        (click)="RemoveAlert(alert.id);">
 
         {{ alert.message }}
 

@@ -7,6 +7,8 @@ import { SignupComponent } from "./signup/signup.component";
 
 import { BooksComponent } from "./books";
 
+import { ActivitiesComponent } from "./activities";
+
 import { BooksPagesComponent } from "./books/books-pages";
 
 import { PageInitComponent, PageCreatedComponent } from "./pages";
@@ -62,5 +64,15 @@ export const AppRoutes = [
         canActivate: [ AuthGuard ]
 
     },
+
+    {
+
+        path: "activities",
+
+        component: ActivitiesComponent,
+
+        canActivate: [ AuthGuard ]
+
+    }
 
 ];

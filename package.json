@@ -31,6 +31,7 @@
     "html-webpack-plugin": "^2.29.0",
     "jam-icons": "^1.0.71",
     "jquery": "^3.2.1",
+    "moment": "^2.20.1",
     "path": "^0.12.7",
     "raw-loader": "^0.5.1",
     "roboto-fontface": "^0.8.0",

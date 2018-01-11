@@ -19,8 +19,34 @@ export class AlertsService {
 
     Success(message) {
 
-        this.subject.next({ SUCCESS, message });
+        this.subject.next({ 
 
+            type: SUCCESS, 
+
+            isError: false,
+
+            isSuccess: true,
+
+            message: message,
+
+        });
+
+
+    };
+
+    Error(message) {
+
+        this.subject.next({ 
+
+            type: ERROR, 
+            
+            isError: true,
+
+            isSuccess: false,
+
+            message: message,
+        
+        });
 
     };
 

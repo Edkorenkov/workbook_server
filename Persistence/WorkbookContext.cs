@@ -15,6 +15,7 @@ namespace Workbook_server.Persistence
         public DbSet<User> Users { get; set; }    
         public DbSet<Book> Books { get; set; }     
         public DbSet<Page> Pages { get; set; } 
+        public DbSet<Token> Tokens { get; set; }    
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityStamp> ActivityStamps { get; set; }
 

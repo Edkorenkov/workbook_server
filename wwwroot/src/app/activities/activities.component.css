@@ -1,0 +1,35 @@
+
+.activities {
+
+    margin-left: 100px; 
+
+}
+
+.activities__time {
+
+    font-family: "Roboto";
+
+    cursor: pointer;
+
+    line-height: 16px;
+
+    color: #404044;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+.activities__time-title,
+.activities__time-control {
+
+    display: inline-block;
+
+}
+
+.activities__time-control {
+
+    
+
+}

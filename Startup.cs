@@ -48,6 +48,7 @@ namespace Workbook_server
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IPageRepository, PageRepository>();
+            services.AddScoped<ITokenRepository, TokenRepository>();
             services.AddScoped<ISecurityService, SecurityService>();
 
             services.AddDbContext<WorkbookContext>(x => x.UseSqlServer(Configuration.GetConnectionString("WorkbookConnection")));

@@ -41,7 +41,9 @@ export class SignupComponent {
 
             .subscribe(security => {
 
-                this._authStore.SetToken(security.token);
+				this._authStore.SetToken(security.token);
+				
+				this._authStore.SetRefreshToken(security.refreshToken);
                 
                 this._authStore.SetTokenExperationTime(security.experationTime);
 

@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
 
 const tokenName = "jwt_token";
 
+const refreshTokenName = "jwt_refresh_token";
+
 const userName = "jwt_user";
 
 const experationTimeName = "jwt_experation"
@@ -24,6 +26,12 @@ export class AuthStore {
 
     };
 
+    GetRefreshToken() {
+
+        return localStorage.getItem(refreshTokenName);
+
+    };
+
     GetTokenExperationTime() {
 
         return localStorage.getItem(experationTimeName);
@@ -39,6 +47,12 @@ export class AuthStore {
     SetUserId(userId) {
 
         localStorage.setItem(userName, userId);
+
+    };
+
+    SetRefreshToken(refreshToken) {
+
+        localStorage.setItem(refreshTokenName, refreshToken);
 
     };
 

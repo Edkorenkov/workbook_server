@@ -11,9 +11,10 @@ using Workbook_server.Persistence;
 namespace Workbook_server.Migrations
 {
     [DbContext(typeof(WorkbookContext))]
-    partial class WorkbookContextModelSnapshot : ModelSnapshot
+    [Migration("20180111103833_Add User Refresh Token")]
+    partial class AddUserRefreshToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -31,9 +31,26 @@ export default class AlertsComponent {
 
             .subscribe(alert => {
 
-                this.alerts.push(alert);
+                const id = this.alerts.length;
+
+                const { type, message, isSuccess, isError } = alert;
+
+
+                this.alerts.push({ id, type, message, isSuccess, isError });
+
+                Rx.Observable.of(this.alerts).delay(5000).subscribe(x => {
+
+                    this.RemoveAlert(id);
+        
+                });
 
             });
+
+    };
+
+    RemoveAlert(alertId) {
+
+        this.alerts = this.alerts.filter(alert => alert.id != alertId);
 
     };
 

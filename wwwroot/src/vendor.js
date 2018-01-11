@@ -15,3 +15,5 @@ import "@angular/forms";
 import "jquery";
 
 import "rxjs";
+
+import "moment";

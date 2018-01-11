@@ -6,6 +6,7 @@ using System.Text;
 using Workbook_server.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Workbook_server.Persistence.Repositories;
 
 namespace Workbook_server.Services 
 {
@@ -18,8 +19,11 @@ namespace Workbook_server.Services
         private readonly string _key;
         private readonly string _issuer;
         private readonly string _audience;
+   
+        private readonly IUserRepository _userRepository;
+        private readonly ITokenRepository _tokenRepository;
 
-        public SecurityService(IConfiguration configuration)
+        public SecurityService(IConfiguration configuration, IUserRepository userRepository, ITokenRepository tokenRepository)
         {
             
             _key = configuration["Tokens:Key"];
@@ -28,9 +32,13 @@ namespace Workbook_server.Services
 
             _audience = configuration["Tokens:Audience"];
 
+            _userRepository = userRepository;
+
+            _tokenRepository = tokenRepository;
+
         }
 
-        public SecurityModel CreateToken(string userEmail) 
+        public SecurityModel CreateToken(string userEmail, string refreshTokenValue) 
         {
 
             var jwtHandler = new JwtSecurityTokenHandler();
@@ -62,9 +70,39 @@ namespace Workbook_server.Services
 
                 Token = jwtHandler.WriteToken(token),
 
+                RefreshToken = refreshTokenValue,
+
                 ExperationTime = DateTime.Now.AddMinutes(_tokenExperationTime.Minutes).ToString("dd.MM.yyyy HH:mm:ss"),
 
             };
+
+        }
+
+        public SecurityModel RefreshToken(int userId) 
+        {
+
+            var refreshToken = _tokenRepository.GetTokenByUserId(userId);
+
+            if (refreshToken == null) {
+
+                throw new UnauthorizedAccessException();
+
+            };
+
+            var user = _userRepository.GetUserById(userId);
+
+            if (refreshToken == null) {
+
+                throw new UnauthorizedAccessException();
+
+            };
+
+            _tokenRepository.RemoveToken(refreshToken.Id);
+
+            var newRefreshToken = _tokenRepository.CreateToken(userId);
+
+
+            return this.CreateToken(user.Email, newRefreshToken);
 
         }
 

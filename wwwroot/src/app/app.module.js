@@ -22,14 +22,17 @@ import { SignupComponent } from "./signup/signup.component";
 
 import SidebarComponent from "./sidebar/sidebar.component";
 
+import { ActivitiesComponent, ActivitiesTagsComponent } from "./activities";
+
 import { BooksComponent, BooksListComponent, BooksSearchComponent, BooksService, BooksSearchPipe } from "./books";
 
 import { BooksPagesComponent, BooksPagesService } from "./books/books-pages";
 
 import { PagesService, PageInitComponent, PageInitControlsComponent, PageCreatedComponent, PageCreatedControlsComponent } from "./pages";
-import AlertsComponent from "./shared/alerts/alerts.component";
-import { AlertsService } from "./shared/alerts/alerts.service";
 
+import AlertsComponent from "./shared/alerts/alerts.component";
+
+import { AlertsService } from "./shared/alerts/alerts.service";
 
 
 @NgModule({
@@ -61,7 +64,9 @@ import { AlertsService } from "./shared/alerts/alerts.service";
         PageInitComponent,
         PageInitControlsComponent,
         PageCreatedComponent,
-        PageCreatedControlsComponent
+        PageCreatedControlsComponent,
+        ActivitiesComponent,
+        ActivitiesTagsComponent
 
     ],
 
