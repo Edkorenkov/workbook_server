@@ -8,3 +8,5 @@ export * from "./auth.guard";
 export * from "./auth.request";
 
 export * from "./auth.service";
+
+export * from "./auth.interceptor";

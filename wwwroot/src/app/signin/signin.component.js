@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 
 import { Router } from "@angular/router";
 
-import { AuthService, AuthStore } from "../auth";
+import { AuthService } from "../auth";
 
 
 @Component({
@@ -15,13 +15,11 @@ import { AuthService, AuthStore } from "../auth";
 })
 export class SigninComponent {
 
-	constructor(router: Router, authService: AuthService, authStore: AuthStore) {
+	constructor(router: Router, authService: AuthService) {
 
 		this._router = router;
 
 		this._authService = authService;
-
-		this._authStore = authStore;
 
 	};
 
@@ -43,17 +41,7 @@ export class SigninComponent {
 		
 			.Signin(this.user)
 
-            .subscribe(security => {
-
-				this._authStore.SetToken(security.token);
-				
-				this._authStore.SetRefreshToken(security.refreshToken);
-                
-                this._authStore.SetTokenExperationTime(security.experationTime);
-
-                this._router.navigate(["/books"]);
-
-            });
+            .subscribe(security => this._router.navigate(["/books"]));
 
 	};
 

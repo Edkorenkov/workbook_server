@@ -1,7 +1,7 @@
 
 import { Injectable } from "@angular/core";
 
-import { Http } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 
 
 import "rxjs/add/operator/map";
@@ -27,7 +27,7 @@ const MapBooks = books => {
 @Injectable()
 export class BooksService {
 
-    constructor(http: Http) {
+    constructor(http: HttpClient) {
 
         this._http = http;
 
@@ -37,23 +37,19 @@ export class BooksService {
 
         return this._http.get("/api/books")
 
-            .map(response => MapBooks(response.json()))
+            .map(books => MapBooks(books))
 
     };
 
     CreateBook(book) {
 
-        return this._http.post("/api/books", book)
-
-            .map(response => response.json());
+        return this._http.post("/api/books", book);
 
     };
 
     RemoveBook(bookId) {
 
-        return this._http.delete("/api/books/" + bookId)
-
-            .map(response => response.json());
+        return this._http.delete("/api/books/" + bookId);
 
     };
 

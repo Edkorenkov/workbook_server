@@ -1,13 +1,13 @@
 
 import { Injectable } from "@angular/core";
 
-import { Http } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 
 
 @Injectable()
 export class BooksPagesService {
 
-    constructor(http: Http) {
+    constructor(http: HttpClient) {
 
         this._http = http;
 
@@ -15,9 +15,7 @@ export class BooksPagesService {
 
     GetPagesByBookId(bookId) {
 
-        return this._http.get("/api/books/" + bookId + "/pages")
-
-            .map(response => response.json());
+        return this._http.get("/api/books/" + bookId + "/pages");
 
     };
 

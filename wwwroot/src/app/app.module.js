@@ -7,12 +7,18 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { FormsModule } from "@angular/forms";
 
-import { HttpModule, RequestOptions } from "@angular/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 
 import { AppRoutes } from "./app.routes";
 
-import { AuthError, AuthGuard, AuthStore, AuthService, AuthRequest } from "./auth";
+import { 
+    AuthError,
+    AuthGuard,
+    AuthStore, 
+    AuthService,
+    AuthRequest,
+    AuthInterceptor } from "./auth";
 
 import AppComponent from "./app.component";
 
@@ -41,7 +47,7 @@ import { AlertsService } from "./shared/alerts/alerts.service";
 
         BrowserModule,
 
-        HttpModule,
+        HttpClientModule,
 
         FormsModule,
 
@@ -75,7 +81,11 @@ import { AlertsService } from "./shared/alerts/alerts.service";
         AuthStore,
         AuthGuard,
         AuthService,      
-        { provide: RequestOptions, useClass: AuthRequest },
+        { 
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
         AlertsService,
         BooksService,
         PagesService,

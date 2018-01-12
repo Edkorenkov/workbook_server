@@ -111,15 +111,15 @@ namespace Learning_JWT.Controllers
                 throw new UnauthorizedAccessException();
             };
 
-            var refreshToken = this._tokenRepository.GetTokenByUserId(user.Id);
-            
-            if (refreshToken.Value != token) 
+            var securityResult = _securityService.RefreshToken(user.Id);
+
+            if (securityResult.RefreshToken != token) 
             {
                 throw new UnauthorizedAccessException();
             };
 
 
-            return Ok();
+            return Ok(securityResult);
 
         }
 

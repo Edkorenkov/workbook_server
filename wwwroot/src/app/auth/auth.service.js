@@ -1,7 +1,9 @@
 
 import { Injectable } from "@angular/core";
 
-import { Http } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
+
+import { AuthStore } from "./auth.store";
 
 import "rxjs/add/operator/map";
 
@@ -12,9 +14,11 @@ const baseUrl = "/api/auth";
 @Injectable()
 export class AuthService {
 
-    constructor(http: Http) {
+    constructor(http: HttpClient, authStore: AuthStore) {
 
         this._http = http;
+
+        this._authStore = authStore;
 
     };
 
@@ -22,7 +26,15 @@ export class AuthService {
 
         return this._http.post(baseUrl + "/signin", JSON.stringify(user))
 
-            .map(response => response.json());
+            .map(security => {
+
+                this._authStore.SetToken(security.token);
+				
+				this._authStore.SetRefreshToken(security.refreshToken);
+                
+                this._authStore.SetTokenExperationTime(security.experationTime);
+
+            });
 
     };
 
@@ -31,6 +43,12 @@ export class AuthService {
         return this._http.post(baseUrl + "/signup", JSON.stringify(user))
         
             .map(response => response.json());
+
+    };
+
+    GetToken() {
+
+        return this._authStore.GetToken();
 
     };
 
