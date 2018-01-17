@@ -52,11 +52,25 @@ export class AuthService {
 
     };
 
-    RefreshToken() {
+    GetRefreshToken() {
 
-        return this._http.post(baseUrl + "/refresh")
+        return this._authStore.GetRefreshToken();
+        
+    };
 
-            .map(response => response.json());
+    RefreshToken(refreshToken) {
+
+        return this._http.post(baseUrl + "/refresh/" + refreshToken)
+
+            .map(security => {
+
+                this._authStore.SetToken(security.token);
+				
+				this._authStore.SetRefreshToken(security.refreshToken);
+                
+                this._authStore.SetTokenExperationTime(security.experationTime);
+
+            });
 
     };
     

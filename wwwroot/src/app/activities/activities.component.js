@@ -45,7 +45,9 @@ export class ActivitiesComponent {
 
         };
 
-        this.weeks = [...Array(Math.ceil(time.daysInMonth() / 7)).keys()].map(week => ({
+        this.weeks = [...Array(Math.ceil(time.daysInMonth() / 7)).keys()].map((week, id) => ({
+
+            id: id,
 
             name: `Week ${week + 1}`,
 
@@ -83,6 +85,71 @@ export class ActivitiesComponent {
             value: time.year(),
 
         };
+
+    };
+
+    PrevMonth(month) {
+
+        let time = moment().month(month.value - 1);
+
+        this.SetMonth(time);
+
+    };
+
+    NextMonth(month) {
+
+        let time = moment().month(month.value + 1);
+
+        this.SetMonth(time);
+
+    };
+
+    SetMonth(time) {
+
+        this.month = {
+
+            name: time.format("MMMM"),
+
+            value: time.month(),
+
+        };
+
+    };
+
+    PrevWeek(currentWeek) {
+
+        let week = this.weeks.find(week => week.id === currentWeek.id - 1);
+
+        if (!week) {
+
+            week =  this.weeks[this.weeks.length - 1];
+
+        };
+
+        this.currentWeek = week;
+
+    };
+
+    NextWeek(currentWeek) {
+
+        let week = this.weeks.find(week => week.id === currentWeek.id + 1);
+
+        if (!week) {
+
+            week = this.weeks[0];
+
+        };
+       
+        this.currentWeek = week;
+
+    };
+
+
+    GetPeriod() {
+
+        //start date time
+
+        //end date time
 
     };
 

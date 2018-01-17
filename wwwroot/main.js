@@ -474,11 +474,23 @@ var AuthService = exports.AuthService = (_dec = (0, _core.Injectable)(), _dec(_c
             return this._authStore.GetToken();
         }
     }, {
-        key: "RefreshToken",
-        value: function RefreshToken() {
+        key: "GetRefreshToken",
+        value: function GetRefreshToken() {
 
-            return this._http.post(baseUrl + "/refresh").map(function (response) {
-                return response.json();
+            return this._authStore.GetRefreshToken();
+        }
+    }, {
+        key: "RefreshToken",
+        value: function RefreshToken(refreshToken) {
+            var _this2 = this;
+
+            return this._http.post(baseUrl + "/refresh/" + refreshToken).map(function (security) {
+
+                _this2._authStore.SetToken(security.token);
+
+                _this2._authStore.SetRefreshToken(security.refreshToken);
+
+                _this2._authStore.SetTokenExperationTime(security.experationTime);
             });
         }
     }]);
@@ -3374,7 +3386,7 @@ var AuthGuard = exports.AuthGuard = (_dec = (0, _core.Injectable)(), _dec(_class
 
                         //todo: work with date times   
 
-                        console.log("guard");
+                        console.log(token);
 
                         if (!token) {
 
@@ -5731,10 +5743,13 @@ var AuthInterceptor = exports.AuthInterceptor = (_dec = (0, _core.Injectable)(),
         _createClass(AuthInterceptor, [{
                 key: "intercept",
                 value: function intercept(request, next) {
+                        var _this = this;
 
                         var authService = this._injector.get(_auth.AuthService);
 
                         var token = authService.GetToken();
+
+                        console.log(token);
 
                         request = request.clone({
 
@@ -5745,8 +5760,6 @@ var AuthInterceptor = exports.AuthInterceptor = (_dec = (0, _core.Injectable)(),
                                 }
 
                         });
-
-                        console.log(request.headers);
 
                         if (token) {
 
@@ -5761,7 +5774,25 @@ var AuthInterceptor = exports.AuthInterceptor = (_dec = (0, _core.Injectable)(),
                                 });
                         };
 
-                        return next.handle(request);
+                        return next.handle(request).catch(function (error) {
+
+                                if (error instanceof _http.HttpErrorResponse) {
+
+                                        if (error.status === 401) {
+
+                                                debugger;
+
+                                                var refreshToken = authService.GetRefreshTokenToken();
+
+                                                authService.RefreshToken(refreshToken).subscribe(function (security) {
+
+                                                        var httpClient = _this._injector.get(_http.HttpClient);
+
+                                                        httpClient.request(request);
+                                                });
+                                        };
+                                };
+                        });
                 }
         }]);
 
@@ -6317,8 +6348,10 @@ var ActivitiesComponent = exports.ActivitiesComponent = (_dec = (0, _core.Compon
 
                 };
 
-                this.weeks = [].concat(_toConsumableArray(Array(Math.ceil(time.daysInMonth() / 7)).keys())).map(function (week) {
+                this.weeks = [].concat(_toConsumableArray(Array(Math.ceil(time.daysInMonth() / 7)).keys())).map(function (week, id) {
                         return {
+
+                                id: id,
 
                                 name: "Week " + (week + 1),
 
@@ -6360,6 +6393,64 @@ var ActivitiesComponent = exports.ActivitiesComponent = (_dec = (0, _core.Compon
 
                         };
                 }
+        }, {
+                key: "PrevMonth",
+                value: function PrevMonth(month) {
+
+                        var time = (0, _moment2.default)().month(month.value - 1);
+
+                        this.SetMonth(time);
+                }
+        }, {
+                key: "NextMonth",
+                value: function NextMonth(month) {
+
+                        var time = (0, _moment2.default)().month(month.value + 1);
+
+                        this.SetMonth(time);
+                }
+        }, {
+                key: "SetMonth",
+                value: function SetMonth(time) {
+
+                        this.month = {
+
+                                name: time.format("MMMM"),
+
+                                value: time.month()
+
+                        };
+                }
+        }, {
+                key: "PrevWeek",
+                value: function PrevWeek(currentWeek) {
+
+                        var week = this.weeks.find(function (week) {
+                                return week.id === currentWeek.id - 1;
+                        });
+
+                        if (!week) {
+
+                                week = this.weeks[this.weeks.length - 1];
+                        };
+
+                        this.currentWeek = week;
+                }
+        }, {
+                key: "NextWeek",
+                value: function NextWeek(currentWeek) {
+
+                        var week = this.weeks.find(function (week) {
+                                return week.id === currentWeek.id + 1;
+                        });
+
+                        if (!week) {
+
+                                week = this.weeks[0];
+                        };
+
+                        this.currentWeek = week;
+                }
         }]);
 
         return ActivitiesComponent;
@@ -6371,7 +6462,7 @@ var ActivitiesComponent = exports.ActivitiesComponent = (_dec = (0, _core.Compon
 /***/ 893:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<sidebar></sidebar>\r\n\r\n<div class=\"activities__tags\">\r\n    \r\n    <activities-tags></activities-tags>\r\n\r\n</div>\r\n\r\n<div class=\"activities\">\r\n\r\n    <!-- <router-outlet></router-outlet> -->\r\n\r\n    <div class=\"activities__time\">\r\n\r\n        <span class=\"jam jam-angle-left activities__time-control\"\r\n              (click)=\"PrevYear(year);\"></span>\r\n\r\n        <h2 class=\"activities__time-title\">{{ year.name }}</h2>\r\n\r\n        <span class=\"jam jam-angle-right activities__time-control\"\r\n              (click)=\"NextYear(year);\"></span>\r\n\r\n    </div>\r\n\r\n    <div class=\"activities__time\">\r\n\r\n        <span class=\"jam jam-angle-left\"></span>\r\n\r\n        <h3>{{ month.name }}</h3>\r\n\r\n        <span class=\"jam jam-angle-right\"></span>\r\n\r\n    </div>\r\n\r\n    <div class=\"activities__time\">\r\n\r\n        <span class=\"jam jam-angle-left\"></span>\r\n\r\n        <h3>{{ currentWeek.name }}</h3>\r\n\r\n        <span class=\"jam jam-angle-right\"></span>\r\n\r\n    </div>\r\n\r\n</div>"
+module.exports = "\r\n<sidebar></sidebar>\r\n\r\n<div class=\"activities__tags\">\r\n    \r\n    <activities-tags></activities-tags>\r\n\r\n</div>\r\n\r\n<div class=\"activities\">\r\n\r\n    <!-- <router-outlet></router-outlet> -->\r\n\r\n    <div class=\"activities__time\">\r\n\r\n        <span class=\"jam jam-angle-left activities__time-control\"\r\n              (click)=\"PrevYear(year);\"></span>\r\n\r\n        <h2 class=\"activities__time-title\">{{ year.name }}</h2>\r\n\r\n        <span class=\"jam jam-angle-right activities__time-control\"\r\n              (click)=\"NextYear(year);\"></span>\r\n\r\n    </div>\r\n\r\n    <div class=\"activities__time\">\r\n\r\n        <span class=\"jam jam-angle-left activities__time-control\"\r\n              (click)=\"PrevMonth(month);\"></span>\r\n\r\n        <h3 class=\"activities__time-title\">{{ month.name }}</h3>\r\n\r\n        <span class=\"jam jam-angle-right activities__time-control\"\r\n              (click)=\"NextMonth(month);\"></span>\r\n\r\n    </div>\r\n\r\n    <div class=\"activities__time\">\r\n\r\n        <span class=\"jam jam-angle-left activities__time-control\"\r\n              (click)=\"PrevWeek(currentWeek);\"></span>\r\n\r\n        <h3 class=\"activities__time-title\">{{ currentWeek.name }}</h3>\r\n\r\n        <span class=\"jam jam-angle-right activities__time-control\"\r\n              (click)=\"PrevWeek(currentWeek);\"></span>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 

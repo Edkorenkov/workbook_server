@@ -3,9 +3,11 @@ import { Injectable, Injector } from "@angular/core";
 
 import { 
     HttpEvent,
+    HttpClient,
     HttpRequest, 
     HttpHandler,
-    HttpInterceptor 
+    HttpInterceptor,
+    HttpErrorResponse, 
 } from "@angular/common/http";
 
 import { AuthService } from "./auth.service";
@@ -27,6 +29,8 @@ export class AuthInterceptor {
 
         var token = authService.GetToken();
 
+        console.log(token);
+
         request = request.clone({
 
             setHeaders: {
@@ -36,8 +40,6 @@ export class AuthInterceptor {
             },
 
         });
-
-        console.log(request.headers);
 
         if (token) {
 
@@ -53,7 +55,34 @@ export class AuthInterceptor {
 
         };
 
-        return next.handle(request);
+        return next.handle(request)
+            .catch(error => {
+
+                if (error instanceof HttpErrorResponse) {
+
+                    if (error.status === 401) {
+
+                        debugger;
+
+                        var refreshToken = authService.GetRefreshTokenToken();
+        
+                        authService
+                        
+                            .RefreshToken(refreshToken)
+
+                            .subscribe(security => {
+
+                                var httpClient = this._injector.get(HttpClient);
+
+                                httpClient.request(request);
+
+                            });
+        
+                    };
+        
+                };
+
+            });
 
     };
 

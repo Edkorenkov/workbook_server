@@ -25,21 +25,25 @@
 
     <div class="activities__time">
 
-        <span class="jam jam-angle-left"></span>
+        <span class="jam jam-angle-left activities__time-control"
+              (click)="PrevMonth(month);"></span>
 
-        <h3>{{ month.name }}</h3>
+        <h3 class="activities__time-title">{{ month.name }}</h3>
 
-        <span class="jam jam-angle-right"></span>
+        <span class="jam jam-angle-right activities__time-control"
+              (click)="NextMonth(month);"></span>
 
     </div>
 
     <div class="activities__time">
 
-        <span class="jam jam-angle-left"></span>
+        <span class="jam jam-angle-left activities__time-control"
+              (click)="PrevWeek(currentWeek);"></span>
 
-        <h3>{{ currentWeek.name }}</h3>
+        <h3 class="activities__time-title">{{ currentWeek.name }}</h3>
 
-        <span class="jam jam-angle-right"></span>
+        <span class="jam jam-angle-right activities__time-control"
+              (click)="PrevWeek(currentWeek);"></span>
 
     </div>
 

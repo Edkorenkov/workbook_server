@@ -27,7 +27,7 @@ export class AuthGuard {
 
         //todo: work with date times   
         
-        console.log("guard");
+        console.log(token);
 
         if (!token) {
 

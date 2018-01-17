@@ -11,9 +11,10 @@ using Workbook_server.Persistence;
 namespace Workbook_server.Migrations
 {
     [DbContext(typeof(WorkbookContext))]
-    partial class WorkbookContextModelSnapshot : ModelSnapshot
+    [Migration("20180117111556_Add CreatedFor Prop To The ActivityStamp Entity")]
+    partial class AddCreatedForPropToTheActivityStampEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

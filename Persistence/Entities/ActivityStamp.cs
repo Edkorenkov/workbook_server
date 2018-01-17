@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,6 +10,9 @@ namespace Workbook_server.Persistence.Entities
         
         [MaxLength(150)]
         public string Description { get; set; }
+
+        [Required]
+        public DateTime CreatedFor { get; set; }
 
         [ForeignKey("ActivityId")]
         public Activity Activity { get; set; }
