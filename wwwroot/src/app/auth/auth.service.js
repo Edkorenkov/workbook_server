@@ -60,7 +60,7 @@ export class AuthService {
 
     RefreshToken(refreshToken) {
 
-        return this._http.post(baseUrl + "/refresh/" + refreshToken)
+        return this._http.get(baseUrl + "/refresh/" + refreshToken)
 
             .map(security => {
 
@@ -69,6 +69,9 @@ export class AuthService {
 				this._authStore.SetRefreshToken(security.refreshToken);
                 
                 this._authStore.SetTokenExperationTime(security.experationTime);
+
+
+                return security;
 
             });
 

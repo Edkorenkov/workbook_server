@@ -9,42 +9,50 @@
 
 <div class="activities">
 
-    <!-- <router-outlet></router-outlet> -->
+	<!-- <router-outlet></router-outlet> -->
+	
+	<div class="activities__pannel clearfix row-flow">
 
-    <div class="activities__time">
+		<div class="span-10">
 
-        <span class="jam jam-angle-left activities__time-control"
-              (click)="PrevYear(year);"></span>
+			<div class="row">
 
-        <h2 class="activities__time-title">{{ year.name }}</h2>
+				<div class="activities__pannel-textbox span-10">
 
-        <span class="jam jam-angle-right activities__time-control"
-              (click)="NextYear(year);"></span>
+					<input type="text" 
+						   class="txt"
+						   placeholder="What are you going to do?"
+						   [(ngModel)]="activityName" />
+	
+				</div>
+	
+				<div class="activities__pannel-btn span-2">
+	
+					<activities-list [activities]="activities"></activities-list>
+	
+				</div>
 
-    </div>
+			</div>
 
-    <div class="activities__time">
+		</div>
 
-        <span class="jam jam-angle-left activities__time-control"
-              (click)="PrevMonth(month);"></span>
+		<div class="span-2">
 
-        <h3 class="activities__time-title">{{ month.name }}</h3>
+			<div class="row">
 
-        <span class="jam jam-angle-right activities__time-control"
-              (click)="NextMonth(month);"></span>
+				<div class="activities__pannel-btn right span-12">
 
-    </div>
+					<input type="button"
+						   class="btn btn-primary"
+						   value="Create"
+						   (click)="CreateActivityStamp();"/>
+	
+				</div>
 
-    <div class="activities__time">
+			</div>
 
-        <span class="jam jam-angle-left activities__time-control"
-              (click)="PrevWeek(currentWeek);"></span>
+		</div>
 
-        <h3 class="activities__time-title">{{ currentWeek.name }}</h3>
-
-        <span class="jam jam-angle-right activities__time-control"
-              (click)="PrevWeek(currentWeek);"></span>
-
-    </div>
+	</div>
 
 </div>

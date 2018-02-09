@@ -7,6 +7,7 @@ namespace Workbook_server.Persistence.Repositories
     {
 
         User GetUserById(int id);
+        User GetUserByToken(string token);
         User GetUserByEmail(string email);
         IEnumerable<User> GetUsers();
         int AddUser(User user);

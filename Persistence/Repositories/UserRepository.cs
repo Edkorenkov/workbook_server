@@ -21,6 +21,11 @@ namespace Workbook_server.Persistence.Repositories
             return _context.Users.Find(id);
         }
 
+        public User GetUserByToken(string token)
+        {
+            return _context.Tokens.Where(x => x.Value == token && x.IsActive).Select(x => x.User).FirstOrDefault();
+        }
+
         public User GetUserByEmail(string email) 
         {
             return _context.Users.FirstOrDefault(x => x.Email.Equals(email));

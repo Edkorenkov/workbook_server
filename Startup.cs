@@ -46,6 +46,7 @@ namespace Workbook_server
 
             services.AddSingleton<IConfiguration>(x => Configuration);
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IActivityRepository, ActivityRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IPageRepository, PageRepository>();
             services.AddScoped<ITokenRepository, TokenRepository>();

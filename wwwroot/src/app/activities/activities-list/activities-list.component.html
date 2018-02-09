@@ -1,0 +1,29 @@
+
+<input type="button"
+       class="btn btn-default"
+       value="Add Activity"
+       (click)="AddActivity();" />
+
+<div class="activities__modal"
+     *ngIf="isVisible">
+
+    <div class="activities__modal-content">
+
+        <div class="">
+
+            <input type="text"
+                   placeholder="Wtire your activity" />
+
+            
+        
+        </div>
+    
+        <ul>
+    
+            <li *ngFor="let activity of activities"></li>
+    
+        </ul>
+
+    </div>
+
+</div>

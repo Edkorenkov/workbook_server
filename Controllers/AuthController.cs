@@ -97,14 +97,16 @@ namespace Learning_JWT.Controllers
         public IActionResult RefreshToken(string token)
         {
 
-            var userClaim = this.User.FindFirst(ClaimTypes.NameIdentifier);
+            var user = this._userRepository.GetUserByToken(token);
 
-            if (userClaim == null) 
-            {
-                throw new UnauthorizedAccessException();
-            };
+            // var userClaim = this.User.FindFirst(ClaimTypes.NameIdentifier);
+
+            // if (userClaim == null) 
+            // {
+            //     throw new UnauthorizedAccessException();
+            // };
             
-            var user = this._userRepository.GetUserByEmail(userClaim.Value);
+            // var user = this._userRepository.GetUserByEmail(userClaim.Value);
 
             if (user == null) 
             {
@@ -112,12 +114,6 @@ namespace Learning_JWT.Controllers
             };
 
             var securityResult = _securityService.RefreshToken(user.Id);
-
-            if (securityResult.RefreshToken != token) 
-            {
-                throw new UnauthorizedAccessException();
-            };
-
 
             return Ok(securityResult);
 

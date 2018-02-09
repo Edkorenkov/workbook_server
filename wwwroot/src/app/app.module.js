@@ -28,7 +28,7 @@ import { SignupComponent } from "./signup/signup.component";
 
 import SidebarComponent from "./sidebar/sidebar.component";
 
-import { ActivitiesComponent, ActivitiesTagsComponent } from "./activities";
+import { ActivitiesComponent, ActivitiesService, ActivitiesListComponent, ActivitiesTagsComponent } from "./activities";
 
 import { BooksComponent, BooksListComponent, BooksSearchComponent, BooksService, BooksSearchPipe } from "./books";
 
@@ -72,7 +72,8 @@ import { AlertsService } from "./shared/alerts/alerts.service";
         PageCreatedComponent,
         PageCreatedControlsComponent,
         ActivitiesComponent,
-        ActivitiesTagsComponent
+        ActivitiesTagsComponent,
+        ActivitiesListComponent
 
     ],
 
@@ -90,6 +91,7 @@ import { AlertsService } from "./shared/alerts/alerts.service";
         BooksService,
         PagesService,
         BooksPagesService,
+        ActivitiesService,
         
     ],
 

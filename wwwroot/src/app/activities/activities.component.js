@@ -1,7 +1,9 @@
 
+import { Router } from "@angular/router";
+
 import { Component } from "@angular/core";
 
-import moment from "moment";
+import { ActivitiesService } from "./activities.service";
 
 
 @Component({
@@ -17,139 +19,54 @@ import moment from "moment";
 })
 export class ActivitiesComponent {
 
-    constructor() {
+    constructor(router: Router, activityService: ActivitiesService) {
 
-        let time = moment();
+        this._router = router;
 
-        this.year = { 
+        this._activityService = activityService;
 
-            name: time.format("YYYY"),
+        this.activities = [];
 
-            value: time.year(),
-
-        };
-
-        this.month = {
-
-            name: time.format("MMMM"),
-
-            value: time.month(),
-
-        };
-
-        this.date = {
-
-            name: time.format("dddd"),
-
-            value: time.date(),
-
-        };
-
-        this.weeks = [...Array(Math.ceil(time.daysInMonth() / 7)).keys()].map((week, id) => ({
-
-            id: id,
-
-            name: `Week ${week + 1}`,
-
-            value: week,
-
-        }));
-
-        this.currentWeek = this.weeks.find(week => time.daysInMonth() >= this.date.value && this.date.value <= (week.value + 1) * 7);
+        this.activityName = "";
 
     };
 
+    ngOnInit() {
 
-    PrevYear(year) {
+		this.subscription = this._activityService.GetActivities(1)
 
-        let time = moment().year(year.value - 1);
+			.subscribe(
+				activities => {
+                 
+                    this.activities = activities;
+                    
+                    console.log(this.activities);
 
-        this.SetYear(time);
+                },
+				error => {
 
-    };
+					this._router.navigate(["/signin"]);
 
-    NextYear(year) {
+				}
+			);
 
-        let time = moment().year(year.value + 1);
+	};
 
-        this.SetYear(time);
+	ngOnDestroy() {
 
-    };
+		this.subscription.unsubscribe();
 
-    SetYear(time) {
+	};
 
-        this.year = { 
+    AddActivity() {
 
-            name: time.format("YYYY"),
 
-            value: time.year(),
-
-        };
-
-    };
-
-    PrevMonth(month) {
-
-        let time = moment().month(month.value - 1);
-
-        this.SetMonth(time);
 
     };
 
-    NextMonth(month) {
-
-        let time = moment().month(month.value + 1);
-
-        this.SetMonth(time);
-
-    };
-
-    SetMonth(time) {
-
-        this.month = {
-
-            name: time.format("MMMM"),
-
-            value: time.month(),
-
-        };
-
-    };
-
-    PrevWeek(currentWeek) {
-
-        let week = this.weeks.find(week => week.id === currentWeek.id - 1);
-
-        if (!week) {
-
-            week =  this.weeks[this.weeks.length - 1];
-
-        };
-
-        this.currentWeek = week;
-
-    };
-
-    NextWeek(currentWeek) {
-
-        let week = this.weeks.find(week => week.id === currentWeek.id + 1);
-
-        if (!week) {
-
-            week = this.weeks[0];
-
-        };
-       
-        this.currentWeek = week;
-
-    };
+    CreateActivityStamp() {
 
 
-    GetPeriod() {
-
-        //start date time
-
-        //end date time
 
     };
 

@@ -1,35 +1,80 @@
 
 .activities {
 
-    margin-left: 100px; 
+    margin: 10px;
+    margin-left: 100px;
 
 }
 
-.activities__time {
+.activities__pannel {
 
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    font-size: 14px;
     font-family: "Roboto";
+    border: 1px solid rgba(0, 0, 0, .08);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
 
+}
+
+.activities__pannel-textbox .txt {
+
+    border: none;
+    background: none;
+    color: #404044;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    min-width: 850px;
+    font-family: "Roboto";
+    outline: none;
+
+}
+
+.activities__pannel-btn.right {
+
+    text-align: right;
+
+}
+
+.activities__pannel-btn .btn {
+
+    font-family: "Roboto";    
+    font-size: 14px;
+    border: none;
+    background: none;
     cursor: pointer;
+    padding: 10px 25px;
+    outline: none;
+    min-width: 130px;
 
-    line-height: 16px;
+}
 
+.activities__pannel-btn .btn-default {
+
+    border: 1px solid #dddee0;
     color: #404044;
 
-    margin: 0;
+}
 
-    padding: 0;
+.activities__pannel-btn .btn-default:hover {
+
+    border: 1px solid #c8c8ca;
 
 }
 
-.activities__time-title,
-.activities__time-control {
+.activities__pannel-btn .btn-primary {
 
-    display: inline-block;
+    border: 1px solid #8a81d6;
+    background-color: #8a81d6;
+    color: #ffffff;
 
 }
 
-.activities__time-control {
+.activities__pannel-btn .btn-primary:hover {
 
-    
+    border: 1px solid #6864a7;
+    background-color: #6864a7;
 
 }

@@ -19,6 +19,7 @@
     "@angular/router": "^4.2.5",
     "@types/core-js": "^0.9.42",
     "@types/node": "^8.0.7",
+    "Kayzen-GS": "^2.4.0",
     "angular2-template-loader": "^0.6.2",
     "babel": "^6.23.0",
     "babel-core": "^6.25.0",
