@@ -58,9 +58,13 @@ export class ActivitiesComponent {
 
 	};
 
-    AddActivity() {
+    CreateActivity(activity) {
 
+        this._activityService
+        
+            .CreateActivity(activity)
 
+            .subscribe(activity => console.log(activity));
 
     };
 

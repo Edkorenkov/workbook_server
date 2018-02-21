@@ -7,13 +7,133 @@
     bottom: 0;
     left: 0;
     z-index: 1000;
+    background-color: rgba(0, 0, 0, .5);
 
 }
+
+.activities__modal-close {
+
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    background: #ffffff;
+    color: #8a81d6;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    padding-top: 12px;
+
+}
+
+.activities__modal-close:hover {
+
+    background-color: #dddee0;
+}
+
 
 .activities__modal-content {
 
     position: relative;
-    width: 600px;
+    width: 400px;
     margin: 150px auto;
+    background: #ffffff;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+    z-index: 1001;
+
+}
+
+.activities__modal-content__editor {
+
+    width: 100%;
+    border-bottom: 1px solid #dddee0;
+    position: relative;
+
+}
+
+.activities__modal-content__editor-input {
+
+    border: none;
+    background: none;
+    padding: 20px;
+    font-family: "Roboto";    
+    font-size: 14px;
+    line-height: 1em;
+    width: 100%;
+
+}
+
+.activities__modal-content__items {
+
+    margin: 0;
+    padding: 0;
+    max-height: 270px;
+    overflow-y: auto;
+
+}
+
+.activities__modal-content__items-item {
+
+    margin: 0;
+    padding: 20px 20px 20px 60px;
+    font-family: "Roboto"; 
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1em;
+    list-style: none;
+    position: relative;
+    color: #aeafb4;
+    height: 54px;
+
+}
+
+.activities__modal-content__items-btn {
+
+    position: absolute;
+    top: 17px;
+    left: 15px;
+    font-size: 16px;
+    color: #aeafb4;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    text-align: left;
+    outline: none;
+
+}
+
+.activities__modal-content__editor-btn:hover {
+
+    color: #8e8f94;
+
+}
+
+.activities__modal-content__controls-btn {
+
+    font-family: "Roboto";    
+    font-size: 14px;
+    line-height: 1em;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 20px;
+    outline: none;
+    width: 100%;
+    border: 1px solid #8a81d6;
+    background-color: #8a81d6;
+    color: #ffffff;
+
+}
+
+.activities__modal-content__controls-btn:hover {
+
+    border: 1px solid #6864a7;
+    background-color: #6864a7;
 
 }

@@ -24,6 +24,9 @@ namespace Workbook_server.Common
 
             TinyMapper.Bind<CreatePageModel, Page>();
 
+            TinyMapper.Bind<Activity, ActivityModel>();
+            TinyMapper.Bind<CreateActivityModel, Activity>();
+
         }
 
     }

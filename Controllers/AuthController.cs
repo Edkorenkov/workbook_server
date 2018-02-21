@@ -99,15 +99,6 @@ namespace Learning_JWT.Controllers
 
             var user = this._userRepository.GetUserByToken(token);
 
-            // var userClaim = this.User.FindFirst(ClaimTypes.NameIdentifier);
-
-            // if (userClaim == null) 
-            // {
-            //     throw new UnauthorizedAccessException();
-            // };
-            
-            // var user = this._userRepository.GetUserByEmail(userClaim.Value);
-
             if (user == null) 
             {
                 throw new UnauthorizedAccessException();

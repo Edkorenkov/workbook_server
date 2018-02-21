@@ -11,7 +11,7 @@
 
 	<!-- <router-outlet></router-outlet> -->
 	
-	<div class="activities__pannel clearfix row-flow">
+	<div class="activities__pannel clearfix row">
 
 		<div class="span-10">
 
@@ -28,7 +28,8 @@
 	
 				<div class="activities__pannel-btn span-2">
 	
-					<activities-list [activities]="activities"></activities-list>
+					<activities-list [activities]="activities"
+								     (onCreateActivity)="CreateActivity($event)"></activities-list>
 	
 				</div>
 

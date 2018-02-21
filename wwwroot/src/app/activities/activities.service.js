@@ -4,14 +4,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 
-import "rxjs/add/operator/map";
-
-
-const MapActivities = activities => {
-
-    return activities.map(activity => ({}));
-
-};
+const ACTIVITIES_URL = `/api/activities`;
 
 
 @Injectable()
@@ -23,11 +16,15 @@ export class ActivitiesService {
 
     };
   
-    GetActivities(userId) {
+    GetActivities() {
 
-        return this._http.get(`/api/users/${userId}/activities`)
+        return this._http.get(ACTIVITIES_URL);
 
-            .map(activities => MapActivities(activities))
+    };
+
+    CreateActivity(activity) {
+
+        return this._http.post(ACTIVITIES_URL, activity);
 
     };
 

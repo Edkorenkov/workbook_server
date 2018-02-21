@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 104:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22,7 +22,7 @@ Object.keys(_auth).forEach(function (key) {
   });
 });
 
-var _auth2 = __webpack_require__(105);
+var _auth2 = __webpack_require__(104);
 
 Object.keys(_auth2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -84,7 +84,7 @@ Object.keys(_auth6).forEach(function (key) {
 
 /***/ }),
 
-/***/ 105:
+/***/ 104:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -362,7 +362,7 @@ var _core = __webpack_require__(4);
 
 var _router = __webpack_require__(25);
 
-var _auth = __webpack_require__(104);
+var _auth = __webpack_require__(103);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -428,9 +428,9 @@ var _core = __webpack_require__(4);
 
 var _http = __webpack_require__(54);
 
-var _auth = __webpack_require__(105);
+var _auth = __webpack_require__(104);
 
-__webpack_require__(102);
+__webpack_require__(148);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -523,7 +523,7 @@ var _core = __webpack_require__(4);
 
 var _router = __webpack_require__(25);
 
-var _auth = __webpack_require__(104);
+var _auth = __webpack_require__(103);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -667,7 +667,7 @@ var _core = __webpack_require__(4);
 
 var _http = __webpack_require__(54);
 
-__webpack_require__(102);
+__webpack_require__(148);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -803,16 +803,9 @@ var _core = __webpack_require__(4);
 
 var _http = __webpack_require__(54);
 
-__webpack_require__(102);
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var MapActivities = function MapActivities(activities) {
-
-    return activities.map(function (activity) {
-        return {};
-    });
-};
+var ACTIVITIES_URL = "/api/activities";
 
 var ActivitiesService = exports.ActivitiesService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
     function ActivitiesService(http) {
@@ -823,11 +816,15 @@ var ActivitiesService = exports.ActivitiesService = (_dec = (0, _core.Injectable
 
     _createClass(ActivitiesService, [{
         key: "GetActivities",
-        value: function GetActivities(userId) {
+        value: function GetActivities() {
 
-            return this._http.get("/api/users/" + userId + "/activities").map(function (activities) {
-                return MapActivities(activities);
-            });
+            return this._http.get(ACTIVITIES_URL);
+        }
+    }, {
+        key: "CreateActivity",
+        value: function CreateActivity(activity) {
+
+            return this._http.post(ACTIVITIES_URL, activity);
         }
     }]);
 
@@ -1042,9 +1039,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_concatMap__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_concatMap__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_concatMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_concatMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_filter__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_filter__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_operator_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_map__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_operator_map__);
@@ -3250,7 +3247,7 @@ var _http = __webpack_require__(54);
 
 var _app = __webpack_require__(873);
 
-var _auth = __webpack_require__(104);
+var _auth = __webpack_require__(103);
 
 var _app2 = __webpack_require__(913);
 
@@ -3328,7 +3325,7 @@ var _booksPages = __webpack_require__(423);
 
 var _pages = __webpack_require__(425);
 
-var _auth = __webpack_require__(104);
+var _auth = __webpack_require__(103);
 
 var AppRoutes = exports.AppRoutes = [{
 
@@ -3443,7 +3440,7 @@ var _core = __webpack_require__(4);
 
 var _router = __webpack_require__(25);
 
-var _auth = __webpack_require__(105);
+var _auth = __webpack_require__(104);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3503,7 +3500,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _http = __webpack_require__(877);
 
-var _auth = __webpack_require__(105);
+var _auth = __webpack_require__(104);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5795,7 +5792,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('4.4.6'
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 exports.AuthInterceptor = undefined;
 
@@ -5814,82 +5811,78 @@ var _Observable = __webpack_require__(0);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var AuthInterceptor = exports.AuthInterceptor = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
-    function AuthInterceptor(injector) {
-        _classCallCheck(this, AuthInterceptor);
+        function AuthInterceptor(injector) {
+                _classCallCheck(this, AuthInterceptor);
 
-        this._injector = injector;
+                this._injector = injector;
 
-        //this._httpClient = this._injector.get(HttpClient);
-
-        this._authService = null;
-    }
-
-    _createClass(AuthInterceptor, [{
-        key: "intercept",
-        value: function intercept(request, next) {
-            var _this = this;
-
-            this._authService = this._injector.get(_auth.AuthService);
-
-            var token = this._authService.GetToken();
-
-            request = request.clone({
-
-                setHeaders: { "Content-Type": "application/json" }
-
-            });
-
-            if (token) {
-
-                request = request.clone({
-
-                    setHeaders: { Authorization: "Bearer " + token }
-
-                });
-
-                return next.handle(request).catch(function (error) {
-                    return _this.errorHandler(error, request);
-                });
-            };
-
-            return next.handle(request);
+                this._authService = null;
         }
-    }, {
-        key: "errorHandler",
-        value: function errorHandler(error, currentRequest) {
 
-            if (error instanceof _http.HttpErrorResponse) {
+        _createClass(AuthInterceptor, [{
+                key: "intercept",
+                value: function intercept(request, next) {
+                        var _this = this;
 
-                if (error.status === 401) {
+                        this._authService = this._injector.get(_auth.AuthService);
 
-                    var httpClient = this._injector.get(_http.HttpClient);
+                        var token = this._authService.GetToken();
 
-                    var refreshToken = this._authService.GetRefreshToken();
+                        request = request.clone({
 
-                    debugger;
-
-                    this._authService.RefreshToken(refreshToken).subscribe(function (security) {
-
-                        currentRequest = currentRequest.clone({
-
-                            setHeaders: {
-
-                                Authorization: "Bearer " + security.token
-
-                            }
+                                setHeaders: { "Content-Type": "application/json" }
 
                         });
 
-                        httpClient.request(currentRequest);
-                    });
-                };
-            };
+                        if (token) {
 
-            return _Observable.Observable.throw(error);
-        }
-    }]);
+                                request = request.clone({
 
-    return AuthInterceptor;
+                                        setHeaders: { Authorization: "Bearer " + token }
+
+                                });
+
+                                return next.handle(request).catch(function (error) {
+                                        return _this.errorHandler(error, request);
+                                });
+                        };
+
+                        return next.handle(request);
+                }
+        }, {
+                key: "errorHandler",
+                value: function errorHandler(error, currentRequest) {
+
+                        if (error instanceof _http.HttpErrorResponse) {
+
+                                if (error.status === 401) {
+
+                                        var httpClient = this._injector.get(_http.HttpClient);
+
+                                        var refreshToken = this._authService.GetRefreshToken();
+
+                                        this._authService.RefreshToken(refreshToken).subscribe(function (security) {
+
+                                                currentRequest = currentRequest.clone({
+
+                                                        setHeaders: {
+
+                                                                Authorization: "Bearer " + security.token
+
+                                                        }
+
+                                                });
+
+                                                httpClient.request(currentRequest);
+                                        });
+                                };
+                        };
+
+                        return _Observable.Observable.throw(error);
+                }
+        }]);
+
+        return AuthInterceptor;
 }()) || _class);
 Reflect.defineMetadata("design:paramtypes", [_core.Injector], AuthInterceptor);
 ;
@@ -6440,8 +6433,13 @@ var ActivitiesComponent = exports.ActivitiesComponent = (_dec = (0, _core.Compon
             this.subscription.unsubscribe();
         }
     }, {
-        key: "AddActivity",
-        value: function AddActivity() {}
+        key: "CreateActivity",
+        value: function CreateActivity(activity) {
+
+            this._activityService.CreateActivity(activity).subscribe(function (activity) {
+                return console.log(activity);
+            });
+        }
     }, {
         key: "CreateActivityStamp",
         value: function CreateActivityStamp() {}
@@ -6457,7 +6455,7 @@ Reflect.defineMetadata("design:paramtypes", [_router.Router, _activities.Activit
 /***/ 894:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<sidebar></sidebar>\r\n\r\n<div class=\"activities__tags\">\r\n    \r\n    <activities-tags></activities-tags>\r\n\r\n</div>\r\n\r\n<div class=\"activities\">\r\n\r\n\t<!-- <router-outlet></router-outlet> -->\r\n\t\r\n\t<div class=\"activities__pannel clearfix row-flow\">\r\n\r\n\t\t<div class=\"span-10\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-textbox span-10\">\r\n\r\n\t\t\t\t\t<input type=\"text\" \r\n\t\t\t\t\t\t   class=\"txt\"\r\n\t\t\t\t\t\t   placeholder=\"What are you going to do?\"\r\n\t\t\t\t\t\t   [(ngModel)]=\"activityName\" />\r\n\t\r\n\t\t\t\t</div>\r\n\t\r\n\t\t\t\t<div class=\"activities__pannel-btn span-2\">\r\n\t\r\n\t\t\t\t\t<activities-list [activities]=\"activities\"></activities-list>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t\t<div class=\"span-2\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-btn right span-12\">\r\n\r\n\t\t\t\t\t<input type=\"button\"\r\n\t\t\t\t\t\t   class=\"btn btn-primary\"\r\n\t\t\t\t\t\t   value=\"Create\"\r\n\t\t\t\t\t\t   (click)=\"CreateActivityStamp();\"/>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t</div>\r\n\r\n</div>"
+module.exports = "\r\n<sidebar></sidebar>\r\n\r\n<div class=\"activities__tags\">\r\n    \r\n    <activities-tags></activities-tags>\r\n\r\n</div>\r\n\r\n<div class=\"activities\">\r\n\r\n\t<!-- <router-outlet></router-outlet> -->\r\n\t\r\n\t<div class=\"activities__pannel clearfix row\">\r\n\r\n\t\t<div class=\"span-10\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-textbox span-10\">\r\n\r\n\t\t\t\t\t<input type=\"text\" \r\n\t\t\t\t\t\t   class=\"txt\"\r\n\t\t\t\t\t\t   placeholder=\"What are you going to do?\"\r\n\t\t\t\t\t\t   [(ngModel)]=\"activityName\" />\r\n\t\r\n\t\t\t\t</div>\r\n\t\r\n\t\t\t\t<div class=\"activities__pannel-btn span-2\">\r\n\t\r\n\t\t\t\t\t<activities-list [activities]=\"activities\"\r\n\t\t\t\t\t\t\t\t     (onCreateActivity)=\"CreateActivity($event)\"></activities-list>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t\t<div class=\"span-2\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-btn right span-12\">\r\n\r\n\t\t\t\t\t<input type=\"button\"\r\n\t\t\t\t\t\t   class=\"btn btn-primary\"\r\n\t\t\t\t\t\t   value=\"Create\"\r\n\t\t\t\t\t\t   (click)=\"CreateActivityStamp();\"/>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t</div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -6518,7 +6516,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ActivitiesListComponent = undefined;
 
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
 var _core = __webpack_require__(4);
 
@@ -6567,6 +6567,8 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
+var ACTIVITY_NAME_MAX_LENGTH = 50;
+
 var ActivitiesListComponent = exports.ActivitiesListComponent = (_dec = (0, _core.Component)({
 
     selector: "activities-list",
@@ -6575,16 +6577,56 @@ var ActivitiesListComponent = exports.ActivitiesListComponent = (_dec = (0, _cor
 
     styles: [__webpack_require__(900)]
 
-}), _dec2 = (0, _core.Input)(), _dec(_class = (_class2 = function ActivitiesListComponent() {
-    _classCallCheck(this, ActivitiesListComponent);
+}), _dec2 = (0, _core.Input)(), _dec3 = (0, _core.Output)(), _dec(_class = (_class2 = function () {
+    function ActivitiesListComponent() {
+        _classCallCheck(this, ActivitiesListComponent);
 
-    _initDefineProp(this, "activities", _descriptor, this);
+        _initDefineProp(this, "activities", _descriptor, this);
 
-    this.isVisible = false;
-}, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "activities", [_dec2], {
+        _initDefineProp(this, "onCreateActivity", _descriptor2, this);
+
+        this.isVisible = false;
+
+        this.activityName = "";
+    }
+
+    _createClass(ActivitiesListComponent, [{
+        key: "OpenModel",
+        value: function OpenModel() {
+
+            this.isVisible = true;
+        }
+    }, {
+        key: "CloseModal",
+        value: function CloseModal() {
+
+            this.isVisible = false;
+        }
+    }, {
+        key: "CreateActivity",
+        value: function CreateActivity(activityName) {
+
+            if (!activityName || activityName.length > ACTIVITY_NAME_MAX_LENGTH) {
+
+                return;
+            };
+
+            this.onCreateActivity.emit({ name: activityName });
+
+            this.activityName = "";
+        }
+    }]);
+
+    return ActivitiesListComponent;
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "activities", [_dec2], {
     enumerable: true,
     initializer: function initializer() {
         return this.activities;
+    }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "onCreateActivity", [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+        return new _core.EventEmitter();
     }
 })), _class2)) || _class);
 ;
@@ -6594,14 +6636,14 @@ var ActivitiesListComponent = exports.ActivitiesListComponent = (_dec = (0, _cor
 /***/ 899:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<input type=\"button\"\r\n       class=\"btn btn-default\"\r\n       value=\"Add Activity\"\r\n       (click)=\"AddActivity();\" />\r\n\r\n<div class=\"activities__modal\"\r\n     *ngIf=\"isVisible\">\r\n\r\n    <div class=\"activities__modal-content\">\r\n\r\n        <div class=\"\">\r\n\r\n            <input type=\"text\"\r\n                   placeholder=\"Wtire your activity\" />\r\n\r\n            \r\n        \r\n        </div>\r\n    \r\n        <ul>\r\n    \r\n            <li *ngFor=\"let activity of activities\"></li>\r\n    \r\n        </ul>\r\n\r\n    </div>\r\n\r\n</div>"
+module.exports = "\r\n<input type=\"button\"\r\n       class=\"btn btn-default\"\r\n       value=\"Add Activity\"\r\n       (click)=\"OpenModel();\" />\r\n\r\n<div class=\"activities__modal\"\r\n     *ngIf=\"isVisible\">\r\n\r\n    <div class=\"activities__modal-content\">\r\n\r\n        <div class=\"activities__modal-close\"\r\n            (click)=\"CloseModal();\">\r\n   \r\n           <span class=\"jam jam-close\"></span>\r\n   \r\n       </div>\r\n\r\n        <div class=\"activities__modal-content__editor\">\r\n\r\n            <input type=\"text\"\r\n                   class=\"activities__modal-content__editor-input\"\r\n                   placeholder=\"Wtire your activity\"\r\n                   [(ngModel)]=\"activityName\" />\r\n        \r\n        </div>\r\n    \r\n        <ul class=\"activities__modal-content__items\">\r\n    \r\n            <li class=\"activities__modal-content__items-item\"\r\n                *ngFor=\"let activity of activities\">\r\n                \r\n                <button class=\"activities__modal-content__items-btn\">\r\n\r\n                    <span class=\"jam jam-arrow-left\"></span>\r\n\r\n                </button>\r\n\r\n                <span>{{ activity.name }}</span>\r\n            \r\n            </li>\r\n    \r\n        </ul>\r\n\r\n        <div class=\"activities__modal-content__controls\">\r\n\r\n            <input type=\"button\"\r\n                   class=\"activities__modal-content__controls-btn\"\r\n                   value=\"Create Activity\"\r\n                   (click)=\"CreateActivity(activityName);\" />\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
 /***/ 900:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.activities__modal {\r\n\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 1000;\r\n\r\n}\r\n\r\n.activities__modal-content {\r\n\r\n    position: relative;\r\n    width: 600px;\r\n    margin: 150px auto;\r\n\r\n}"
+module.exports = "\r\n.activities__modal {\r\n\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 1000;\r\n    background-color: rgba(0, 0, 0, .5);\r\n\r\n}\r\n\r\n.activities__modal-close {\r\n\r\n    position: absolute;\r\n    top: 0;\r\n    right: -40px;\r\n    width: 40px;\r\n    height: 40px;\r\n    background: #ffffff;\r\n    color: #8a81d6;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    padding-top: 12px;\r\n\r\n}\r\n\r\n.activities__modal-close:hover {\r\n\r\n    background-color: #dddee0;\r\n}\r\n\r\n\r\n.activities__modal-content {\r\n\r\n    position: relative;\r\n    width: 400px;\r\n    margin: 150px auto;\r\n    background: #ffffff;\r\n    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);\r\n    z-index: 1001;\r\n\r\n}\r\n\r\n.activities__modal-content__editor {\r\n\r\n    width: 100%;\r\n    border-bottom: 1px solid #dddee0;\r\n    position: relative;\r\n\r\n}\r\n\r\n.activities__modal-content__editor-input {\r\n\r\n    border: none;\r\n    background: none;\r\n    padding: 20px;\r\n    font-family: \"Roboto\";    \r\n    font-size: 14px;\r\n    line-height: 1em;\r\n    width: 100%;\r\n\r\n}\r\n\r\n.activities__modal-content__items {\r\n\r\n    margin: 0;\r\n    padding: 0;\r\n    max-height: 270px;\r\n    overflow-y: auto;\r\n\r\n}\r\n\r\n.activities__modal-content__items-item {\r\n\r\n    margin: 0;\r\n    padding: 20px 20px 20px 60px;\r\n    font-family: \"Roboto\"; \r\n    font-size: 14px;\r\n    font-weight: 700;\r\n    line-height: 1em;\r\n    list-style: none;\r\n    position: relative;\r\n    color: #aeafb4;\r\n    height: 54px;\r\n\r\n}\r\n\r\n.activities__modal-content__items-btn {\r\n\r\n    position: absolute;\r\n    top: 17px;\r\n    left: 15px;\r\n    font-size: 16px;\r\n    color: #aeafb4;\r\n    width: auto;\r\n    margin: 0;\r\n    padding: 0;\r\n    cursor: pointer;\r\n    background: none;\r\n    border: none;\r\n    width: 20px;\r\n    height: 20px;\r\n    text-align: left;\r\n    outline: none;\r\n\r\n}\r\n\r\n.activities__modal-content__editor-btn:hover {\r\n\r\n    color: #8e8f94;\r\n\r\n}\r\n\r\n.activities__modal-content__controls-btn {\r\n\r\n    font-family: \"Roboto\";    \r\n    font-size: 14px;\r\n    line-height: 1em;\r\n    border: none;\r\n    background: none;\r\n    cursor: pointer;\r\n    padding: 20px;\r\n    outline: none;\r\n    width: 100%;\r\n    border: 1px solid #8a81d6;\r\n    background-color: #8a81d6;\r\n    color: #ffffff;\r\n\r\n}\r\n\r\n.activities__modal-content__controls-btn:hover {\r\n\r\n    border: 1px solid #6864a7;\r\n    background-color: #6864a7;\r\n\r\n}"
 
 /***/ }),
 
