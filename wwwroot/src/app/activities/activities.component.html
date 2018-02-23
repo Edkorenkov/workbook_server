@@ -22,14 +22,13 @@
 					<input type="text" 
 						   class="txt"
 						   placeholder="What are you going to do?"
-						   [(ngModel)]="activityName" />
+						   [(ngModel)]="activityStampName" />
 	
 				</div>
 	
 				<div class="activities__pannel-btn span-2">
 	
-					<activities-list [activities]="activities"
-								     (onCreateActivity)="CreateActivity($event)"></activities-list>
+					<activities-list (onSelectActivity)="SelectActivity($event)"></activities-list>
 	
 				</div>
 
@@ -53,6 +52,12 @@
 			</div>
 
 		</div>
+
+	</div>
+
+	<div>
+
+
 
 	</div>
 

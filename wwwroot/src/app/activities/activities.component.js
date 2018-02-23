@@ -25,50 +25,25 @@ export class ActivitiesComponent {
 
         this._activityService = activityService;
 
-        this.activities = [];
+        this.activityStamps = [];
 
-        this.activityName = "";
+        this.activity = null;
+
+        this.activityStampName = "";
 
     };
 
     ngOnInit() {
 
-		this.subscription = this._activityService.GetActivities(1)
-
-			.subscribe(
-				activities => {
-                 
-                    this.activities = activities;
-                    
-                    console.log(this.activities);
-
-                },
-				error => {
-
-					this._router.navigate(["/signin"]);
-
-				}
-			);
-
 	};
 
-	ngOnDestroy() {
+    SelectActivity(activity) {
 
-		this.subscription.unsubscribe();
-
-	};
-
-    CreateActivity(activity) {
-
-        this._activityService
-        
-            .CreateActivity(activity)
-
-            .subscribe(activity => console.log(activity));
+        this.activity = activity;
 
     };
 
-    CreateActivityStamp() {
+    CreateActivityStamp(activityStampName) {
 
 
 

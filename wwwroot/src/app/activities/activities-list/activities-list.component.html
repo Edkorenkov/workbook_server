@@ -1,8 +1,17 @@
 
-<input type="button"
-       class="btn btn-default"
-       value="Add Activity"
-       (click)="OpenModel();" />
+<div class="activities__tag"
+     *ngIf="selectedActivityName">
+
+    <span>#{{ selectedActivityName }}</span>
+
+</div>
+
+<button class="activities__btn"
+        (click)="OpenModel();">
+
+    <span class="jam jam-tag"></span>
+
+</button>
 
 <div class="activities__modal"
      *ngIf="isVisible">
@@ -28,14 +37,9 @@
         <ul class="activities__modal-content__items">
     
             <li class="activities__modal-content__items-item"
-                *ngFor="let activity of activities">
+                *ngFor="let activity of activities"
+                (click)="SelectActivity(activity);">
                 
-                <button class="activities__modal-content__items-btn">
-
-                    <span class="jam jam-arrow-left"></span>
-
-                </button>
-
                 <span>{{ activity.name }}</span>
             
             </li>

@@ -1,6 +1,8 @@
 
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 
+import { ActivitiesService } from "../activities.service";
+
 
 const ACTIVITY_NAME_MAX_LENGTH = 50;
 
@@ -20,15 +22,36 @@ const ACTIVITY_NAME_MAX_LENGTH = 50;
 })
 export class ActivitiesListComponent {
 
-    @Input() activities;
 
-    @Output() onCreateActivity = new EventEmitter();
+    @Output() onSelectActivity = new EventEmitter();
 
-    constructor() {
+
+    constructor(activityService: ActivitiesService) {
+
+        this._activityService = activityService;
 
         this.isVisible = false;
 
+
+        this.activities = [];
+
         this.activityName = "";
+
+        this.selectedActivityName = "";
+
+    };
+
+    ngOnInit() {
+
+        this._activityService.GetActivities()
+
+			.subscribe(
+
+                activities => this.activities = activities,
+
+                error => this._router.navigate(["/signin"])
+
+            );
 
     };
 
@@ -52,9 +75,29 @@ export class ActivitiesListComponent {
 
         };
 
-        this.onCreateActivity.emit({ name: activityName });
+        const activity = { name: activityName };
 
         this.activityName = "";
+
+        this.activities.push(activity);
+
+        this._activityService
+        
+            .CreateActivity(activity)
+
+            .subscribe(activity => console.log(activity));
+
+    };
+
+    SelectActivity(activity) {
+
+        const { name } = activity;
+
+        this.selectedActivityName = name;
+
+        this.onSelectActivity.emit({ name });
+
+        this.CloseModal();
 
     };
 
