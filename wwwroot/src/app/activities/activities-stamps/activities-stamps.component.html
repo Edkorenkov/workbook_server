@@ -1,0 +1,23 @@
+
+<div class="activities">
+
+    <h1 class="activities__title">Today</h1>
+
+    <div class="activities__stamps clearfix row"
+         *ngFor="let activityStamp of activityStamps">
+
+        <div class="activities__stamps-stamp span-12">
+    
+            <div class="row">
+
+                <div class="span-6">{{ activityStamp.description }}</div>
+
+                <div class="span-6">{{ activityStamp.activity.name }}</div>
+
+            </div>
+    
+        </div>
+    
+    </div>
+
+</div>

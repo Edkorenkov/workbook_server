@@ -45,7 +45,13 @@ export class ActivitiesComponent {
 
     CreateActivityStamp(activityStampName) {
 
+        this.activityStamps.push({ 
 
+            description: activityStampName,
+
+            activity: this.activity,
+
+        });
 
     };
 

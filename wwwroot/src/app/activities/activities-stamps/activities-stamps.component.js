@@ -1,5 +1,5 @@
 
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 
 @Component({
@@ -8,11 +8,13 @@ import { Component } from "@angular/core";
 
     templateUrl: "./activities-stamps.component.html",
     
-    styleUrls: [],
+    styleUrls: [ "./activities-stamps.component.css" ],
 
 })
 export class ActivitiesStampsComponent {
 
+    @Input() activityStamps;
+    
     constructor() {
 
     };

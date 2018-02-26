@@ -335,7 +335,7 @@ var _rxjs = __webpack_require__(96);
 
 var _rxjs2 = _interopRequireDefault(_rxjs);
 
-var _alertsTypes = __webpack_require__(909);
+var _alertsTypes = __webpack_require__(910);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -809,19 +809,19 @@ Object.keys(_activities2).forEach(function (key) {
   });
 });
 
-var _activitiesTags = __webpack_require__(896);
+var _activitiesStamps = __webpack_require__(896);
 
-Object.keys(_activitiesTags).forEach(function (key) {
+Object.keys(_activitiesStamps).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _activitiesTags[key];
+      return _activitiesStamps[key];
     }
   });
 });
 
-var _activitiesList = __webpack_require__(898);
+var _activitiesList = __webpack_require__(899);
 
 Object.keys(_activitiesList).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -845,7 +845,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _booksPages = __webpack_require__(901);
+var _booksPages = __webpack_require__(902);
 
 Object.keys(_booksPages).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -936,7 +936,7 @@ Object.keys(_pages).forEach(function (key) {
   });
 });
 
-var _pageInit = __webpack_require__(904);
+var _pageInit = __webpack_require__(905);
 
 Object.keys(_pageInit).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -948,7 +948,7 @@ Object.keys(_pageInit).forEach(function (key) {
   });
 });
 
-var _pageInitControls = __webpack_require__(906);
+var _pageInitControls = __webpack_require__(907);
 
 Object.keys(_pageInitControls).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -960,7 +960,7 @@ Object.keys(_pageInitControls).forEach(function (key) {
   });
 });
 
-var _pageCreated = __webpack_require__(908);
+var _pageCreated = __webpack_require__(909);
 
 Object.keys(_pageCreated).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -972,7 +972,7 @@ Object.keys(_pageCreated).forEach(function (key) {
   });
 });
 
-var _pageCreatedControls = __webpack_require__(911);
+var _pageCreatedControls = __webpack_require__(912);
 
 Object.keys(_pageCreatedControls).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3249,7 +3249,7 @@ var _app = __webpack_require__(873);
 
 var _auth = __webpack_require__(103);
 
-var _app2 = __webpack_require__(913);
+var _app2 = __webpack_require__(914);
 
 var _app3 = _interopRequireDefault(_app2);
 
@@ -3257,7 +3257,7 @@ var _signin = __webpack_require__(417);
 
 var _signup = __webpack_require__(419);
 
-var _sidebar = __webpack_require__(915);
+var _sidebar = __webpack_require__(916);
 
 var _sidebar2 = _interopRequireDefault(_sidebar);
 
@@ -3269,7 +3269,7 @@ var _booksPages = __webpack_require__(423);
 
 var _pages = __webpack_require__(425);
 
-var _alerts = __webpack_require__(918);
+var _alerts = __webpack_require__(919);
 
 var _alerts2 = _interopRequireDefault(_alerts);
 
@@ -3283,7 +3283,7 @@ var AppModule = (_dec = (0, _core.NgModule)({
 
     imports: [_platformBrowser.BrowserModule, _http.HttpClientModule, _forms.FormsModule, _router.RouterModule.forRoot(_app.AppRoutes, { useHash: true })],
 
-    declarations: [_app3.default, _alerts2.default, _signin.SigninComponent, _signup.SignupComponent, _sidebar2.default, _books.BooksComponent, _books.BooksSearchPipe, _books.BooksListComponent, _books.BooksSearchComponent, _booksPages.BooksPagesComponent, _pages.PageInitComponent, _pages.PageInitControlsComponent, _pages.PageCreatedComponent, _pages.PageCreatedControlsComponent, _activities.ActivitiesComponent, _activities.ActivitiesTagsComponent, _activities.ActivitiesListComponent],
+    declarations: [_app3.default, _alerts2.default, _signin.SigninComponent, _signup.SignupComponent, _sidebar2.default, _books.BooksComponent, _books.BooksSearchPipe, _books.BooksListComponent, _books.BooksSearchComponent, _booksPages.BooksPagesComponent, _pages.PageInitComponent, _pages.PageInitControlsComponent, _pages.PageCreatedComponent, _pages.PageCreatedControlsComponent, _activities.ActivitiesComponent, _activities.ActivitiesStampsComponent, _activities.ActivitiesListComponent],
 
     providers: [_auth.AuthStore, _auth.AuthGuard, _auth.AuthService, {
         provide: _http.HTTP_INTERCEPTORS,
@@ -6424,7 +6424,16 @@ var ActivitiesComponent = exports.ActivitiesComponent = (_dec = (0, _core.Compon
         }
     }, {
         key: "CreateActivityStamp",
-        value: function CreateActivityStamp(activityStampName) {}
+        value: function CreateActivityStamp(activityStampName) {
+
+            this.activityStamps.push({
+
+                description: activityStampName,
+
+                activity: this.activity
+
+            });
+        }
     }]);
 
     return ActivitiesComponent;
@@ -6437,7 +6446,7 @@ Reflect.defineMetadata("design:paramtypes", [_router.Router, _activities.Activit
 /***/ 894:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<sidebar></sidebar>\r\n\r\n<div class=\"activities__tags\">\r\n    \r\n    <activities-tags></activities-tags>\r\n\r\n</div>\r\n\r\n<div class=\"activities\">\r\n\r\n\t<!-- <router-outlet></router-outlet> -->\r\n\t\r\n\t<div class=\"activities__pannel clearfix row\">\r\n\r\n\t\t<div class=\"span-10\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-textbox span-10\">\r\n\r\n\t\t\t\t\t<input type=\"text\" \r\n\t\t\t\t\t\t   class=\"txt\"\r\n\t\t\t\t\t\t   placeholder=\"What are you going to do?\"\r\n\t\t\t\t\t\t   [(ngModel)]=\"activityStampName\" />\r\n\t\r\n\t\t\t\t</div>\r\n\t\r\n\t\t\t\t<div class=\"activities__pannel-btn span-2\">\r\n\t\r\n\t\t\t\t\t<activities-list (onSelectActivity)=\"SelectActivity($event)\"></activities-list>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t\t<div class=\"span-2\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-btn right span-12\">\r\n\r\n\t\t\t\t\t<input type=\"button\"\r\n\t\t\t\t\t\t   class=\"btn btn-primary\"\r\n\t\t\t\t\t\t   value=\"Create\"\r\n\t\t\t\t\t\t   (click)=\"CreateActivityStamp();\"/>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t</div>\r\n\r\n\t<div>\r\n\r\n\r\n\r\n\t</div>\r\n\r\n</div>"
+module.exports = "\r\n<sidebar></sidebar>\r\n\r\n<div class=\"activities\">\r\n\r\n\t<!-- <router-outlet></router-outlet> -->\r\n\t\r\n\t<div class=\"activities__pannel clearfix row\">\r\n\r\n\t\t<div class=\"span-10\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-textbox span-10\">\r\n\r\n\t\t\t\t\t<input type=\"text\" \r\n\t\t\t\t\t\t   class=\"txt\"\r\n\t\t\t\t\t\t   placeholder=\"What are you going to do?\"\r\n\t\t\t\t\t\t   [(ngModel)]=\"activityStampName\" />\r\n\t\r\n\t\t\t\t</div>\r\n\t\r\n\t\t\t\t<div class=\"activities__pannel-btn span-2\">\r\n\t\r\n\t\t\t\t\t<activities-list (onSelectActivity)=\"SelectActivity($event)\"></activities-list>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t\t<div class=\"span-2\">\r\n\r\n\t\t\t<div class=\"row\">\r\n\r\n\t\t\t\t<div class=\"activities__pannel-btn right span-12\">\r\n\r\n\t\t\t\t\t<input type=\"button\"\r\n\t\t\t\t\t\t   class=\"btn btn-primary\"\r\n\t\t\t\t\t\t   value=\"Create\"\r\n\t\t\t\t\t\t   (click)=\"CreateActivityStamp(activityStampName);\"/>\r\n\t\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\r\n\t\t</div>\r\n\r\n\t</div>\r\n\r\n\t<div>\r\n\r\n\t\t<activities-stamps [activityStamps]=\"activityStamps\"></activities-stamps>\r\n\r\n\t</div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -6457,25 +6466,75 @@ module.exports = "\r\n.activities {\r\n\r\n    margin: 10px;\r\n    margin-left:
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.ActivitiesTagsComponent = undefined;
+exports.ActivitiesStampsComponent = undefined;
 
-var _dec, _class;
+var _dec, _dec2, _class, _desc, _value, _class2, _descriptor;
 
 var _core = __webpack_require__(4);
 
+function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+        enumerable: descriptor.enumerable,
+        configurable: descriptor.configurable,
+        writable: descriptor.writable,
+        value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+}
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ActivitiesTagsComponent = exports.ActivitiesTagsComponent = (_dec = (0, _core.Component)({
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+        desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
 
-    selector: "activities-tags",
+    if ('value' in desc || desc.initializer) {
+        desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+        return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+        desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+        desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+        Object['define' + 'Property'](target, property, desc);
+        desc = null;
+    }
+
+    return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+var ActivitiesStampsComponent = exports.ActivitiesStampsComponent = (_dec = (0, _core.Component)({
+
+    selector: "activities-stamps",
 
     template: __webpack_require__(897),
 
-    styles: []
+    styles: [__webpack_require__(898)]
 
-}), _dec(_class = function ActivitiesTagsComponent() {
-    _classCallCheck(this, ActivitiesTagsComponent);
-}) || _class);
+}), _dec2 = (0, _core.Input)(), _dec(_class = (_class2 = function ActivitiesStampsComponent() {
+    _classCallCheck(this, ActivitiesStampsComponent);
+
+    _initDefineProp(this, "activityStamps", _descriptor, this);
+}, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "activityStamps", [_dec2], {
+    enumerable: true,
+    initializer: function initializer() {
+        return this.activityStamps;
+    }
+})), _class2)) || _class);
 ;
 
 /***/ }),
@@ -6483,11 +6542,18 @@ var ActivitiesTagsComponent = exports.ActivitiesTagsComponent = (_dec = (0, _cor
 /***/ 897:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\r\n<div class=\"activities\">\r\n\r\n    <h1 class=\"activities__title\">Today</h1>\r\n\r\n    <div class=\"activities__stamps clearfix row\"\r\n         *ngFor=\"let activityStamp of activityStamps\">\r\n\r\n        <div class=\"activities__stamps-stamp span-12\">\r\n    \r\n            <div class=\"row\">\r\n\r\n                <div class=\"span-6\">{{ activityStamp.description }}</div>\r\n\r\n                <div class=\"span-6\">{{ activityStamp.activity.name }}</div>\r\n\r\n            </div>\r\n    \r\n        </div>\r\n    \r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
 /***/ 898:
+/***/ (function(module, exports) {
+
+module.exports = "\r\n.activities {\r\n\r\n    margin-top: 40px;\r\n    font-family: \"Roboto\";\r\n\r\n}\r\n\r\n.activities__title {\r\n\r\n    font-size: 18px;\r\n    font-weight: 700;\r\n    color: #404044;\r\n    margin: 20px 0;\r\n\r\n}\r\n\r\n.activities__stamps {\r\n\r\n    width: 100%;\r\n    background-color: #ffffff;\r\n    padding: 10px;\r\n    font-size: 14px;\r\n    border: 1px solid rgba(0, 0, 0, .08);\r\n\r\n}\r\n\r\n.activities__stamps-stamp {\r\n\r\n    padding: 10px;\r\n\r\n}"
+
+/***/ }),
+
+/***/ 899:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6557,9 +6623,9 @@ var ActivitiesListComponent = exports.ActivitiesListComponent = (_dec = (0, _cor
 
         selector: "activities-list",
 
-        template: __webpack_require__(899),
+        template: __webpack_require__(900),
 
-        styles: [__webpack_require__(900)]
+        styles: [__webpack_require__(901)]
 
 }), _dec2 = (0, _core.Output)(), _dec(_class = (_class2 = function () {
         function ActivitiesListComponent(activityService) {
@@ -6646,21 +6712,21 @@ Reflect.defineMetadata("design:paramtypes", [_activities.ActivitiesService], Act
 
 /***/ }),
 
-/***/ 899:
+/***/ 900:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"activities__tag\"\r\n     *ngIf=\"selectedActivityName\">\r\n\r\n    <span>#{{ selectedActivityName }}</span>\r\n\r\n</div>\r\n\r\n<button class=\"activities__btn\"\r\n        (click)=\"OpenModel();\">\r\n\r\n    <span class=\"jam jam-tag\"></span>\r\n\r\n</button>\r\n\r\n<div class=\"activities__modal\"\r\n     *ngIf=\"isVisible\">\r\n\r\n    <div class=\"activities__modal-content\">\r\n\r\n        <div class=\"activities__modal-close\"\r\n            (click)=\"CloseModal();\">\r\n   \r\n           <span class=\"jam jam-close\"></span>\r\n   \r\n       </div>\r\n\r\n        <div class=\"activities__modal-content__editor\">\r\n\r\n            <input type=\"text\"\r\n                   class=\"activities__modal-content__editor-input\"\r\n                   placeholder=\"Wtire your activity\"\r\n                   [(ngModel)]=\"activityName\" />\r\n        \r\n        </div>\r\n    \r\n        <ul class=\"activities__modal-content__items\">\r\n    \r\n            <li class=\"activities__modal-content__items-item\"\r\n                *ngFor=\"let activity of activities\"\r\n                (click)=\"SelectActivity(activity);\">\r\n                \r\n                <span>{{ activity.name }}</span>\r\n            \r\n            </li>\r\n    \r\n        </ul>\r\n\r\n        <div class=\"activities__modal-content__controls\">\r\n\r\n            <input type=\"button\"\r\n                   class=\"activities__modal-content__controls-btn\"\r\n                   value=\"Create Activity\"\r\n                   (click)=\"CreateActivity(activityName);\" />\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
-/***/ 900:
+/***/ 901:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n.activities__tag { \r\n\r\n    background-color: #dddee0;\r\n    color: #6f7074;\r\n    height: 40px;\r\n    padding: 15px;\r\n    border: 1px solid #dddee0;\r\n    float: left;\r\n    font-family: \"Roboto\";    \r\n    font-size: 14px;\r\n    font-weight: 700;\r\n    line-height: 10px;\r\n\r\n}\r\n\r\n.activities__btn {\r\n\r\n    width: 40px;\r\n    height: 40px;\r\n    background: #ffffff;\r\n    color: #8a81d6;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    font-size: 17px;\r\n    padding-top: 6px;\r\n    border: 1px solid #8a81d6;\r\n    float: left;\r\n    margin-left: 5px; \r\n\r\n}\r\n\r\n.activities__btn:hover {\r\n\r\n    border: 1px solid #6864a7;\r\n    color: #6864a7;\r\n\r\n}\r\n\r\n.activities__modal {\r\n\r\n    position: fixed;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 1000;\r\n    background-color: rgba(0, 0, 0, .5);\r\n\r\n}\r\n\r\n.activities__modal-close {\r\n\r\n    position: absolute;\r\n    top: 0;\r\n    right: -40px;\r\n    width: 40px;\r\n    height: 40px;\r\n    background: #ffffff;\r\n    color: #8a81d6;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    padding-top: 12px;\r\n\r\n}\r\n\r\n.activities__modal-close:hover {\r\n\r\n    background-color: #dddee0;\r\n}\r\n\r\n\r\n.activities__modal-content {\r\n\r\n    position: relative;\r\n    width: 400px;\r\n    margin: 150px auto;\r\n    background: #ffffff;\r\n    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);\r\n    z-index: 1001;\r\n\r\n}\r\n\r\n.activities__modal-content__editor {\r\n\r\n    width: 100%;\r\n    border-bottom: 1px solid #dddee0;\r\n    position: relative;\r\n\r\n}\r\n\r\n.activities__modal-content__editor-input {\r\n\r\n    border: none;\r\n    background: none;\r\n    padding: 20px;\r\n    font-family: \"Roboto\";    \r\n    font-size: 14px;\r\n    line-height: 1em;\r\n    width: 100%;\r\n\r\n}\r\n\r\n.activities__modal-content__items {\r\n\r\n    margin: 0;\r\n    padding: 0;\r\n    max-height: 270px;\r\n    overflow-y: auto;\r\n\r\n}\r\n\r\n.activities__modal-content__items-item {\r\n\r\n    margin: 0;\r\n    padding: 20px 20px 20px 40px;\r\n    font-family: \"Roboto\"; \r\n    font-size: 14px;\r\n    font-weight: 700;\r\n    line-height: 1em;\r\n    list-style: none;\r\n    position: relative;\r\n    color: #aeafb4;\r\n    height: 54px;\r\n\r\n}\r\n\r\n.activities__modal-content__items-item:hover {\r\n\r\n    cursor: pointer;\r\n    color: #8e8f94;\r\n    background-color: #dddee0;   \r\n\r\n}\r\n\r\n.activities__modal-content__items-btn {\r\n\r\n    position: absolute;\r\n    top: 17px;\r\n    left: 15px;\r\n    font-size: 16px;\r\n    color: #aeafb4;\r\n    width: auto;\r\n    margin: 0;\r\n    padding: 0;\r\n    cursor: pointer;\r\n    background: none;\r\n    border: none;\r\n    width: 20px;\r\n    height: 20px;\r\n    text-align: left;\r\n    outline: none;\r\n\r\n}\r\n\r\n.activities__modal-content__editor-btn:hover {\r\n\r\n    color: #8e8f94;\r\n\r\n}\r\n\r\n.activities__modal-content__controls-btn {\r\n\r\n    font-family: \"Roboto\";    \r\n    font-size: 14px;\r\n    line-height: 1em;\r\n    border: none;\r\n    background: none;\r\n    cursor: pointer;\r\n    padding: 20px;\r\n    outline: none;\r\n    width: 100%;\r\n    border: 1px solid #8a81d6;\r\n    background-color: #8a81d6;\r\n    color: #ffffff;\r\n\r\n}\r\n\r\n.activities__modal-content__controls-btn:hover {\r\n\r\n    border: 1px solid #6864a7;\r\n    background-color: #6864a7;\r\n\r\n}"
 
 /***/ }),
 
-/***/ 901:
+/***/ 902:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6685,9 +6751,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var BooksPagesComponent = exports.BooksPagesComponent = (_dec = (0, _core.Component)({
 
-    template: __webpack_require__(902),
+    template: __webpack_require__(903),
 
-    styles: [__webpack_require__(903)]
+    styles: [__webpack_require__(904)]
 
 }), _dec(_class = function () {
     function BooksPagesComponent(route, booksPagesService) {
@@ -6724,21 +6790,21 @@ Reflect.defineMetadata("design:paramtypes", [_router.ActivatedRoute, _booksPages
 
 /***/ }),
 
-/***/ 902:
+/***/ 903:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"book__pages\">\r\n\r\n    <div class=\"book__pages-toolbar clearfix\">\r\n\r\n        <div class=\"book__pages-toolbar__control\"\r\n             [routerLink]=\"['/books', bookId, 'pages', 'create']\">\r\n\r\n            <span class=\"book__pages-toolbar__control-icon jam jam-plus\"></span>\r\n\r\n            <span class=\"book__pages-toolbar__control-title\">Add new page</span>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"book__pages-list clearfix\">\r\n\r\n        <div class=\"book__pages-list__page\"\r\n             *ngFor=\"let page of pages\"\r\n             [routerLink]=\"['/books', bookId, 'pages', page.order]\">\r\n\r\n            <div class=\"book__pages-list__page-content\">\r\n\r\n                <div class=\"book__pages-list__page-date\">{{ page?.dateCreated }}</div>\r\n\r\n                <h2 class=\"book__pages-list__page-title\">{{ page?.title }}</h2>\r\n\r\n                <p class=\"book__pages-list__page-text\">{{ page?.text }}</p>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
-/***/ 903:
+/***/ 904:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n.book__pages {\r\n\r\n    font-family: \"Roboto\";\r\n\r\n}\r\n\r\n.book__pages-toolbar {\r\n\r\n    width: 100%;\r\n\r\n}\r\n\r\n.book__pages-toolbar__control {\r\n\r\n    position: relative;\r\n\r\n    color: #1b69e8;\r\n\r\n    padding: 5px;\r\n\r\n    float: left;\r\n\r\n    cursor: pointer;\r\n\r\n}\r\n\r\n.book__pages-toolbar__control:hover {\r\n\r\n    color: #2163ce;\r\n\r\n}\r\n\r\n.book__pages-toolbar__control-icon {\r\n\r\n    font-size: 12px;    \r\n\r\n    position: absolute;\r\n\r\n    top: 9px;\r\n\r\n    left: 0;\r\n\r\n}\r\n\r\n.book__pages-toolbar__control-title {\r\n\r\n    font-size: 14px;\r\n\r\n    line-height: 14px;\r\n\r\n    font-weight: 400;\r\n\r\n    padding-left: 15px;\r\n\r\n}\r\n\r\n.book__pages-list {\r\n\r\n    width: 100%;\r\n\r\n}\r\n\r\n.book__pages-list__page {  \r\n\r\n    padding: 0;\r\n\r\n    margin: 0;\r\n\r\n    width: 25%;\r\n\r\n    \r\n\r\n    float: left;\r\n\r\n}\r\n\r\n.book__pages-list__page-content { \r\n\r\n    margin: 10px;\r\n\r\n    border: 1px solid #dddee0;\r\n\r\n    background-color: #ffffff;\r\n\r\n    border-radius: 3px;  \r\n    \r\n    padding: 25px;\r\n\r\n    min-height: 200px;\r\n\r\n}\r\n\r\n.book__pages-list__page-content:hover {\r\n\r\n    border: 1px solid #2979fb;\r\n\r\n    cursor: pointer;\r\n\r\n}\r\n\r\n.book__pages-list__page-date {\r\n\r\n    font-size: 12px;\r\n\r\n    font-weight: 600;\r\n\r\n    color: #aeafb4;\r\n\r\n}\r\n\r\n.book__pages-list__page-title {\r\n\r\n    color: #404044;\r\n\r\n    margin: 20px 0;\r\n\r\n    font-size: 18px;\r\n\r\n    font-weight: 600;\r\n\r\n}\r\n\r\n.book__pages-list__page-text {\r\n\r\n    color: #404044;\r\n\r\n    font-size: 14px;\r\n\r\n    font-weight: 300;\r\n\r\n    margin: 0;\r\n\r\n    padding: 0;\r\n\r\n}\r\n\r\n/* .pages {\r\n\r\n    font-family: \"Roboto\";\r\n\r\n}\r\n\r\n.pages .page {\r\n\r\n    float: left;\r\n\r\n    margin: 0 10px;\r\n\r\n}\r\n\r\n.pages .page .page-content {\r\n\r\n    padding: 10px;\r\n\r\n    cursor: pointer;\r\n\r\n    background-color: #ffffff;\r\n\r\n    border: 1px solid #e6ecf5;\r\n\r\n    color: #515365;\r\n\r\n    font-size: 16px;\r\n\r\n    font-weight: 300;\r\n\r\n    line-height: 1em;\r\n\r\n} */"
 
 /***/ }),
 
-/***/ 904:
+/***/ 905:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6763,7 +6829,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var PageInitComponent = exports.PageInitComponent = (_dec = (0, _core.Component)({
 
-    template: __webpack_require__(905),
+    template: __webpack_require__(906),
 
     styles: [__webpack_require__(426)]
 
@@ -6826,14 +6892,14 @@ Reflect.defineMetadata("design:paramtypes", [_router.Router, _router.ActivatedRo
 
 /***/ }),
 
-/***/ 905:
+/***/ 906:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"container pages__editor\">\r\n\r\n    <page-init-controls (onCreatePage)=\"CreatePage(page);\"\r\n                        (onDiscardPageChanges)=\"DiscardPageChanges(page);\"></page-init-controls>\r\n\r\n    <div class=\"pages__editor-canvas\">\r\n\r\n        <h5 class=\"pages__editor-canvas__time\">{{ page?.dateCreated }}</h5>\r\n\r\n        <div class=\"editor-content\">\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <input type=\"text\"\r\n                           class=\"pages__editor-canvas__title\" \r\n                           placeholder=\"Create title...\"\r\n                           [(ngModel)]=\"page.title\" />\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <textarea class=\"pages__editor-canvas__text\"\r\n                              placeholder=\"Write your ideas here...\"\r\n                              [(ngModel)]=\"page.text\"></textarea>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
-/***/ 906:
+/***/ 907:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6899,7 +6965,7 @@ var PageInitControlsComponent = exports.PageInitControlsComponent = (_dec = (0, 
 
     selector: "page-init-controls",
 
-    template: __webpack_require__(907),
+    template: __webpack_require__(908),
 
     styles: [__webpack_require__(427)]
 
@@ -6942,14 +7008,14 @@ var PageInitControlsComponent = exports.PageInitControlsComponent = (_dec = (0, 
 
 /***/ }),
 
-/***/ 907:
+/***/ 908:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"pages__editor-controls clearfix\">\r\n    \r\n        <div class=\"pages__editor-controls__actions clearfix\">\r\n    \r\n            <div class=\"pages__editor-controls__actions-action\"\r\n                (click)=\"CreatePage();\">\r\n    \r\n                <span class=\"jam jam-check\"></span>\r\n    \r\n            </div>\r\n    \r\n            <div class=\"pages__editor-controls__actions-action\"\r\n                (click)=\"DiscardPageChanges();\">\r\n    \r\n                <span class=\"jam jam-close\"></span>\r\n    \r\n            </div>\r\n            \r\n        </div>\r\n    \r\n    </div>"
 
 /***/ }),
 
-/***/ 908:
+/***/ 909:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6986,7 +7052,7 @@ var CLONE_MESSAGE = "Page successfully cloned.";
 
 var PageCreatedComponent = exports.PageCreatedComponent = (_dec = (0, _core.Component)({
 
-    template: __webpack_require__(910),
+    template: __webpack_require__(911),
 
     styles: [__webpack_require__(426)]
 
@@ -7115,7 +7181,7 @@ Reflect.defineMetadata("design:paramtypes", [_router.Router, _router.ActivatedRo
 
 /***/ }),
 
-/***/ 909:
+/***/ 910:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7132,14 +7198,14 @@ var INFO = exports.INFO = "Info";
 
 /***/ }),
 
-/***/ 910:
+/***/ 911:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"container pages__editor\">\r\n\r\n    <page-created-controls (onPrevPage)=\"PrevPage(page);\"\r\n                           (onNextPage)=\"NextPage(page);\"\r\n                           (onEditPage)=\"EditPage(page);\"\r\n                           (onDownloadPage)=\"DownloadPage(page);\"\r\n                           (onClonePage)=\"ClonePage(page);\"\r\n                           (onDeletePage)=\"DeletePage(page);\"></page-created-controls>\r\n\r\n    <div class=\"pages__editor-canvas\">\r\n\r\n        <h5 class=\"pages__editor-canvas__time\">{{ page.dateCreated }}</h5>\r\n\r\n        <div class=\"editor-content\">\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <input type=\"text\"\r\n                           class=\"pages__editor-canvas__title\" \r\n                           placeholder=\"Create title...\"\r\n                           [(ngModel)]=\"page.title\" />\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n\r\n                <div class=\"column\">\r\n\r\n                    <textarea class=\"pages__editor-canvas__text\"\r\n                              placeholder=\"Write your ideas here...\"\r\n                              [(ngModel)]=\"page.text\"></textarea>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
-/***/ 911:
+/***/ 912:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7205,7 +7271,7 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
 
     selector: "page-created-controls",
 
-    template: __webpack_require__(912),
+    template: __webpack_require__(913),
 
     styles: [__webpack_require__(427)]
 
@@ -7300,14 +7366,14 @@ var PageCreatedControlsComponent = exports.PageCreatedControlsComponent = (_dec 
 
 /***/ }),
 
-/***/ 912:
+/***/ 913:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"pages__editor-controls clearfix\">\r\n\r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"PrevPage();\">\r\n\r\n            <span class=\"jam jam-arrow-left\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"NextPage();\">\r\n\r\n            <span class=\"jam jam-arrow-right\"></span>\r\n\r\n        </div>\r\n\r\n    </div>\r\n    \r\n    <div class=\"pages__editor-controls__actions clearfix\">\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"EditPage();\">\r\n\r\n            <span class=\"jam jam-check\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n             (click)=\"DownloadPage();\">\r\n\r\n            <span class=\"jam jam-download\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"ClonePage();\">\r\n\r\n            <span class=\"jam jam-files\"></span>\r\n\r\n        </div>\r\n\r\n        <div class=\"pages__editor-controls__actions-action\"\r\n            (click)=\"DeletePage();\">\r\n\r\n            <span class=\"jam jam-trash-f\"></span>\r\n\r\n        </div>\r\n        \r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
-/***/ 913:
+/***/ 914:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7328,7 +7394,7 @@ var AppComponent = (_dec = (0, _core.Component)({
 
 	selector: "app",
 
-	template: __webpack_require__(914)
+	template: __webpack_require__(915)
 
 }), _dec(_class = function AppComponent() {
 	_classCallCheck(this, AppComponent);
@@ -7337,14 +7403,14 @@ exports.default = AppComponent;
 
 /***/ }),
 
-/***/ 914:
+/***/ 915:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<router-outlet></router-outlet>\r\n\r\n<alerts></alerts>"
 
 /***/ }),
 
-/***/ 915:
+/***/ 916:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7365,9 +7431,9 @@ var SidebarComponent = (_dec = (0, _core.Component)({
 
 	selector: "sidebar",
 
-	template: __webpack_require__(916),
+	template: __webpack_require__(917),
 
-	styles: [__webpack_require__(917)]
+	styles: [__webpack_require__(918)]
 
 }), _dec(_class = function SidebarComponent() {
 	_classCallCheck(this, SidebarComponent);
@@ -7377,21 +7443,21 @@ exports.default = SidebarComponent;
 
 /***/ }),
 
-/***/ 916:
+/***/ 917:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"sidebar-wrap\">\r\n\r\n    <ul class=\"sidebar\">\r\n\r\n        <li [routerLink]=\"['/books']\" \r\n            [routerLinkActive]=\"['is-active']\">\r\n            \r\n            <span class=\"jam jam-book\"></span>\r\n            \r\n        </li>\r\n\r\n        <li [routerLink]=\"['/activities']\"\r\n            [routerLinkActive]=\"['is-active']\">\r\n\r\n            <span class=\"jam jam-tags\"></span>\r\n\r\n        </li>\r\n        \r\n        <li>\r\n\r\n            <span class=\"jam jam-calendar\"></span>\r\n\r\n        </li>\r\n\r\n    </ul>\r\n\r\n</div>"
 
 /***/ }),
 
-/***/ 917:
+/***/ 918:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n.sidebar-wrap {\r\n\r\n    position: fixed;\r\n\r\n    top: 0;\r\n\r\n    left: 0;\r\n\r\n    bottom: 0;\r\n\r\n    width: 60px;\r\n\r\n    background-color: #2b303b;\r\n\r\n    color: #788195;\r\n\r\n}\r\n\r\n.sidebar-wrap .sidebar {\r\n\r\n    margin: 0;\r\n\r\n    padding: 0;\r\n\r\n    list-style: none;\r\n\r\n    font-size: 26px;\r\n\r\n}\r\n\r\n.sidebar-wrap .sidebar .sidebar-devider {\r\n\r\n    position: absolute;\r\n\r\n    bottom: 0;\r\n\r\n    left: 0;\r\n\r\n}\r\n\r\n.sidebar-wrap .sidebar li {\r\n\r\n    text-align: center;\r\n\r\n    cursor: pointer;\r\n\r\n    vertical-align: middle;\r\n\r\n    width: 60px;\r\n\r\n    height: 60px;\r\n\r\n    display: inline-block;\r\n\r\n    position: relative;\r\n\r\n    line-height: 70px;\r\n\r\n    outline: none;\r\n\r\n}\r\n\r\n.sidebar-wrap .sidebar li.is-active,\r\n.sidebar-wrap .sidebar li:hover {\r\n\r\n    color: #ffffff;\r\n\r\n}"
 
 /***/ }),
 
-/***/ 918:
+/***/ 919:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7422,9 +7488,9 @@ var AlertsComponent = (_dec = (0, _core.Component)({
 
     selector: "alerts",
 
-    template: __webpack_require__(919),
+    template: __webpack_require__(920),
 
-    styles: [__webpack_require__(920)]
+    styles: [__webpack_require__(921)]
 
 }), _dec(_class = function () {
     function AlertsComponent(alertsService) {
@@ -7475,14 +7541,14 @@ exports.default = AlertsComponent;
 
 /***/ }),
 
-/***/ 919:
+/***/ 920:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<ul class=\"alerts\">\r\n\r\n    <li class=\"alerts__box\"\r\n        *ngFor=\"let alert of alerts\"\r\n        [ngClass]=\"{ 'alerts__box-success': alert.isSuccess, 'alerts__box-error': alert.isError }\"\r\n        (click)=\"RemoveAlert(alert.id);\">\r\n\r\n        {{ alert.message }}\r\n\r\n    </li>\r\n\r\n</ul>"
 
 /***/ }),
 
-/***/ 920:
+/***/ 921:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n.alerts { \r\n\r\n    position: absolute;\r\n\r\n    bottom: 0;\r\n\r\n    right: 10px;\r\n\r\n    list-style: none;\r\n\r\n    margin: 0;\r\n\r\n    padding: 0;\r\n\r\n}\r\n\r\n.alerts__box {\r\n\r\n    padding: 15px;\r\n\r\n    width: 350px;\r\n\r\n    margin: 10px 0;\r\n\r\n    background-color: #4279c0;\r\n\r\n    color: #ffffff;\r\n\r\n    font-size: 14px;\r\n\r\n    font-family: \"Roboto\";\r\n\r\n    font-weight: 500;\r\n    \r\n    line-height: 11px;\r\n\r\n    cursor: pointer;\r\n\r\n}\r\n\r\n.alerts__box-success {\r\n\r\n    background-color: #0b9b57;\r\n\r\n}\r\n\r\n.alerts__box-error {\r\n\r\n    background-color: #ca5252;\r\n\r\n}"
